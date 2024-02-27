@@ -1,8 +1,0 @@
-const UserActionTypes = {
-  SET_USER_MESSAGE: "SET_USER_MESSAGE",
-  SIGN_OUT: "SIGN_OUT",
-  SET_CURRENT_USER: "SET_CURRENT_USER",
-  VALIDATE_TOKEN: "VALIDATE_TOKEN",
-};
-
-export default UserActionTypes;
