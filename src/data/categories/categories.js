@@ -22,24 +22,24 @@ export const categories = [
       { name: "Menus Corse", slug: "corse" },
     ],
   },
-  // {
-  //   name: "Entrées",
-  //   title: "Entrées",
-  //   link: "/products/entrees",
-  //   slug: "entrees",
-  // },
+  {
+    name: "Entrées",
+    title: "Entrées",
+    link: "/products/entrees",
+    slug: "entrees",
+  },
   {
     name: "Pâtes",
     title: "Pâtes",
     link: "/products/pates",
     slug: "pates",
   },
-  // {
-  //   name: "Nos Gnocchi",
-  //   title: "Gnocchi",
-  //   link: "/products/gnocchi",
-  //   slug: "gnocchi",
-  // },
+  {
+    name: "Nos Gnocchi",
+    title: "Gnocchi",
+    link: "/products/gnocchi",
+    slug: "gnocchi",
+  },
   // {
   //   name: "Nos Risotto",
   //   title: "Risotto",
