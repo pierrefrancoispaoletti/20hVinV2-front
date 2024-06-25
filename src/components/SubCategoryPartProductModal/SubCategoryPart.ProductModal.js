@@ -3,10 +3,10 @@ import styled from "styled-components";
 import { colors } from "../../_const";
 
 const SubCategoryContainer = styled.div`
-  display: grid;
-  gap: 10px;
+  display: flex;
   justify-items: center;
   align-items: center;
+  flex-flow: row wrap;
   padding: 20px;
 `;
 
@@ -47,8 +47,8 @@ const SubCategoryPartProductModal = ({
         <div key={sub.slug}>
           <RadioButton
             id={sub.slug}
-            type="radio"
-            name="subCategory"
+            type='radio'
+            name='subCategory'
             value={sub.slug}
             checked={subCategory === sub.slug}
             onChange={handleChange}

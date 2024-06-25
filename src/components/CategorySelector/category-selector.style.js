@@ -16,13 +16,14 @@ export const ListContainer = styled.ul`
   list-style: none;
 `;
 export const CategoryItem = styled.li`
-  font-family: "Lora";
+  font-family: "poppins";
+  font-size: 0.7em;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 75px;
-  height: 75px;
+  width: 60px;
+  height: 60px;
   margin: 0px 8px;
   background: ${colors.gold};
   border: 3px solid ${colors.ecriture};

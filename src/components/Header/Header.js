@@ -8,9 +8,13 @@ import logo from "../../assets/images/logo.png";
 const Header = () => {
   return (
     <HeaderContainer>
-      <Link to="/">
+      <Link to='/'>
         <div>
-          <ImageElement width="120px" image={logo} alt={"logo 20hVin"} />
+          <ImageElement
+            width='120px'
+            image={logo}
+            alt={"logo TDO"}
+          />
         </div>
       </Link>
       <Loginbutton />

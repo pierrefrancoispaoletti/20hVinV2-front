@@ -4,7 +4,7 @@ import { colors } from "../../_const";
 export const LoaderContainer = styled.div`
   display: flex;
   align-items: center;
-  width: 80%;
+  width: 50%;
   justify-content: center;
   margin: auto;
   letter-spacing: 8px;

@@ -6,13 +6,11 @@ import CategorySelector from "../CategorySelector/CategorySelector";
 import Header from "../Header/Header";
 import Loader from "../Loader/Loader";
 import LocalMessage from "../LocalMessage/LocalMessage";
-import OrderNumberBanner from "../OrderNumberBanner/OrderNumberBanner";
 import Copyright from "../Copyright";
-import background from "../../assets/images/background.png";
 
 const Login = lazy(() => import("../../pages/Login/Login"));
 const ProductsPage = lazy(() =>
-  import("../../pages/ProductsPage/ProductsPage")
+  import("../../pages/ProductsPage/ProductsPage"),
 );
 const App = () => {
   const user = useSelector(selectCurrentUser);
@@ -31,23 +29,37 @@ const App = () => {
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route
-            path="/"
-            element={<ProductsPage loading={loading} setLoading={setLoading} />}
+            path='/'
+            element={
+              <ProductsPage
+                loading={loading}
+                setLoading={setLoading}
+              />
+            }
           >
             <Route
               path={`products/:category`}
               element={
-                <ProductsPage loading={loading} setLoading={setLoading} />
+                <ProductsPage
+                  loading={loading}
+                  setLoading={setLoading}
+                />
               }
             />
           </Route>
           <Route
-            path="connexion"
+            path='connexion'
             element={
               user ? (
-                <Navigate replace to="/" />
+                <Navigate
+                  replace
+                  to='/'
+                />
               ) : (
-                <Login loading={loading} setLoading={setLoading} />
+                <Login
+                  loading={loading}
+                  setLoading={setLoading}
+                />
               )
             }
           />

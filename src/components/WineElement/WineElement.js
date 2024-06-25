@@ -11,7 +11,7 @@ const WineElement = ({ couleur, wineContent }) => {
   const getWineColor = (couleur) => {
     switch (couleur) {
       case "rouge":
-        return "#742f37";
+        return "#f25957";
       case "blanc":
         return "#f1f285";
       case "rosé":
@@ -28,7 +28,7 @@ const WineElement = ({ couleur, wineContent }) => {
         (color) =>
           color?.isChecked && (
             <WinePriceElement
-              className="price wineprice"
+              className='price wineprice'
               key={color.value}
               color={color.value}
             >
@@ -38,9 +38,7 @@ const WineElement = ({ couleur, wineContent }) => {
                   wrap: "wrap",
                   justifyContent: "center",
                   color: getWineColor(color.value),
-                  background: "grey",
                   margin: "5px",
-                  border: "1px solid white",
                 }}
               >
                 <span>
@@ -50,7 +48,7 @@ const WineElement = ({ couleur, wineContent }) => {
                         ? faWineBottle
                         : faWineGlass
                     }
-                    size="1x"
+                    size='1x'
                   />
                 </span>
                 <span style={{ display: "inline-block", paddingLeft: "8px" }}>
@@ -58,7 +56,7 @@ const WineElement = ({ couleur, wineContent }) => {
                 </span>
               </div>
             </WinePriceElement>
-          )
+          ),
       )}
     </WinePriceContainer>
   );

@@ -11,24 +11,24 @@ export const CopyrightStyled = styled.div`
     justify-content: center;
     align-items: center;
     margin: auto;
-    padding: 10px;
-    font-family: "Lora", sans-serif !important;
-    font-size: 1.3em;
+    padding: 1px;
+    font-family: "poppins" !important;
+    font-size: 1em;
     color: ${colors.ecriture}!important;
   }
 
   .footer__alvp {
     border-radius: 8px;
     padding: 2px 5px;
-    font-family: "Lora", sans-serif !important;
+    font-family: "poppins" !important;
     color: ${colors.ecriture}!important;
   }
 
   h3 {
-    font-family: "Lora", cursive !important;
+    font-family: "poppins" !important;
     text-align: center !important;
-    letter-spacing: 0.2em;
-    font-size: 1.8em !important;
+    letter-spacing: 2px;
+    font-size: 1.1em !important;
     color: ${colors.ecriture} !important;
   }
 

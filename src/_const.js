@@ -1,11 +1,11 @@
-export const placeLocation = "20hvin";
-export let serverURI = "https://a-20h20-server-v2-6f2c2d3816e2.herokuapp.com";
+export const placeLocation = "tdo";
+export let serverURI = "https://tdo-4cad66b1b452.herokuapp.com";
 
 export const colors = {
   main: "white", //white
   secondary: "#777758", //vert foncé
   tertiary: "#62714e", // vert clair
-  ecriture: "#000000", //black
+  ecriture: "white", //black
   background: "#f4ba9a",
   background2: "#ff8080",
   gold: "#7B7338",
@@ -16,11 +16,13 @@ export const categoriesStyle2 = [];
 // pour les separations entre les articles
 export const allowedCategories = [];
 
-export const phoneNumber = "+33495722052";
+export const phoneNumber = "+33495283672";
 
-export const facebook = "https://www.facebook.com/20HeuresVin";
-export const instagram = "https://www.instagram.com/le_20_heures_vin";
-export const url = "https://20h20.fr";
-export const mail = "christophe.torre75@gmail.com";
+export const facebook =
+  "https://www.facebook.com/people/TDO-le-temps-des-oliviers/100063509410835/";
+export const instagram =
+  "https://www.instagram.com/le_temps_des_oliviers/?hl=fr";
+export const url = "https://la-carte.le-tdo.com/";
+export const mail = "vannina.giorgi@hotmail.fr";
 
-export const GOOGLE_API_KEY = "AIzaSyCXqBKgfwkkW1urDlW0_GBNaS79P1ZjU0E";
+export const GOOGLE_API_KEY = "";

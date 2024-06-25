@@ -1,110 +1,67 @@
-import { faWineBottle, faCoffee } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import logoBagel from "../../assets/images/bagel.png";
-import logoSalade from "../../assets/images/salade.png";
-import logoVin from "../../assets/images/vin.png";
-import logoBoissons from "../../assets/images/boissons.png";
 const logoSmall = "20px";
 export const categories = [
   {
-    name: "Côté Apéro",
-    legend: "( à partager... ou pas ... )",
+    name: "Pizze Al Forno",
     link: "/",
-    slug: "apero",
+    slug: "pizze",
   },
   {
-    name: "Menus",
-    title: "Nos menus",
-    link: "/products/menus",
-    slug: "menus",
+    name: "La Cuisine",
+    title: "La Cuisine",
+    link: "/products/cuisine",
+    slug: "cuisine",
     subCategory: [
-      { name: "Menu enfant", slug: "enfant" },
-      { name: "Menus Corse", slug: "corse" },
+      { name: "Antipasti", slug: "antipasti" },
+      { name: "Pesce", slug: "pesce" },
+      { name: "Pasta", slug: "pasta" },
+      { name: "Carne", slug: "carne" },
     ],
   },
   {
-    name: "Entrées",
-    title: "Entrées",
-    link: "/products/entrees",
-    slug: "entrees",
+    name: "Dolce",
+    title: "Dolce",
+    link: "/products/dolce",
+    slug: "dolce",
   },
   {
-    name: "Pâtes",
-    title: "Pâtes",
-    link: "/products/pates",
-    slug: "pates",
-  },
-  {
-    name: "Nos Gnocchi",
-    title: "Gnocchi",
-    link: "/products/gnocchi",
-    slug: "gnocchi",
-  },
-  // {
-  //   name: "Nos Risotto",
-  //   title: "Risotto",
-  //   link: "/products/risotto",
-  //   slug: "risotto",
-  // },
-  {
-    name: "Pizza",
-    title: "Pizza",
-    link: "/products/pizza",
-    slug: "pizza",
-  },
-  // {
-  //   name: "Nos Poissons",
-  //   title: "Poissons",
-  //   link: "/products/poissons",
-  //   slug: "poissons",
-  // },
-  // {
-  //   name: "Nos Viandes",
-  //   title: "Viandes",
-  //   link: "/products/viandes",
-  //   slug: "viandes",
-  // },
-  {
-    name: "Nos Douceurs",
-    title: "Les douceurs",
-    link: "/products/douceurs",
-    slug: "douceurs",
+    name: "Les Boissons",
+    link: "/products/boissons",
+    slug: "boissons",
     subCategory: [
-      { name: "Pizzas sucrées", slug: "pizzas-sucrees" },
-      { name: "Desserts", slug: "desserts" },
+      { name: "Apéritifs", slug: "aperitifs" },
+      { name: "Eaux", slug: "eaux" },
+      { name: "Softs", slug: "softs" },
     ],
   },
   {
-    name: "Softs et boissons chaudes",
-    link: "/products/softs",
-    slug: "softs",
-  },
-  {
-    name: "Cocktails",
+    name: "Les Cocktails",
     link: "/products/cocktails",
     slug: "cocktails",
     subCategory: [
-      { name: "Cocktails", slug: "cocktails-a" },
-      { name: "Sans-alcool", slug: "cocktails-b" },
+      { name: "Cocktails Classiques", slug: "cocktails-classiques" },
+      { name: "Cocktails Création", slug: "cocktails-creations" },
     ],
   },
   {
-    name: "Alcools",
-    link: "/products/alcools",
-    slug: "alcools",
+    name: "Les Spiritueux",
+    link: "/products/spiritueux",
+    slug: "spiritueux",
     subCategory: [
-      { name: "Apéritifs", slug: "aperitifs" },
-      { name: "Bières", slug: "bieres" },
-      { name: "Digestifs", slug: "digestifs" },
+      { name: "Gin", slug: "gins" },
+      { name: "Rhum", slug: "rhum" },
+      { name: "Vodka", slug: "vodka" },
+      { name: "Whisky", slug: "whisky" },
+      { name: "Autres", slug: "autres" },
     ],
   },
   {
-    name: "La Cave",
+    name: "La Vinothéque",
     link: "/products/cave",
     slug: "cave",
     subCategory: [
       { name: "Vins Corse", slug: "vins-corse" },
       { name: "Vins Français", slug: "vins-fr" },
+      { name: "Vins du monde", slug: "vins-mnd" },
       { name: "Champagnes", slug: "champagnes" },
     ],
   },

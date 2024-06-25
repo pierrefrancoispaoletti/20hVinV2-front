@@ -201,7 +201,7 @@ const hexToRGB = (hex) => {
   return result
     ? `rgba(${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(
         result[3],
-        16
+        16,
       )}, 0.6)`
     : null;
 };
@@ -250,12 +250,13 @@ export const TableauWrapper = styled.div`
 
 export const TableauTitle = styled.h2`
   position: relative;
-  font-family: "Lora";
-  font-size: 2.6em;
+  font-family: "Aestethe";
+  font-size: 3.5em;
   margin-bottom: 12px;
   color: ${colors.main};
   text-align: center;
-  letter-spacing: 10px;
+  letter-spacing: 1px;
+  font-weight: 200;
   overflow-wrap: anywhere;
   @media (max-width: 379px) {
     font-size: 1.9em;
@@ -272,12 +273,12 @@ export const TableauLegend = styled.p`
 
 export const TableauContent = styled.div`
   position: relative;
-  font-family: "Lora";
+  font-family: "poppins";
   display: flex;
-  width: 80%;
+  width: 95%;
   flex-direction: column;
   align-items: flex-start;
-  line-height: 36px;
+  line-height: 22px;
   color: ${colors.main};
   margin: auto;
   text-align: center;
@@ -296,10 +297,10 @@ export const TableauContent = styled.div`
     align-items: flex-start;
     color: ${colors.main};
     letter-spacing: 2px;
-    font-size: 1.5rem;
     text-transform: uppercase;
-    font-size: 1.5rem;
-    margin: 12px auto;
+    font-size: 1.1rem;
+    font-family: "poppins-bold";
+    margin: 8px auto;
     font-weight: bold;
     & > span {
       width: 100%;
@@ -315,23 +316,21 @@ export const TableauContent = styled.div`
   }
 
   .price {
-    font-family: "Lora";
-    font-weight: "bold";
+    font-family: "poppins";
     /* :not(.wineprice) {
       border-bottom: 1px solid ${colors.main};
     } */
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     @media (max-width: 370px) {
-      font-size: 1.5rem;
+      font-size: 1rem;
     }
   }
 
   .description {
-    font-family: "Lora";
-    letter-spacing: 1.5px;
+    font-family: "poppins";
     text-align: left;
     margin: 0;
-    font-size: 1.3rem;
+    font-size: 0.9rem;
     white-space: pre-wrap;
     @media (min-width: 415px) {
       white-space: normal;
@@ -354,13 +353,14 @@ export const WinePriceContainer = styled.div`
   justify-content: center;
   vertical-align: baseline;
   width: 100%;
+  font-size: 0.8rem;
+  font-family: "poppins";
   ${getWineColor};
 `;
 
 export const WinePriceElement = styled.span`
   display: inline-block;
   align-self: center;
-  background-color: #565a68;
   margin-bottom: 8px;
   text-align: center;
   width: 35%;
@@ -373,7 +373,6 @@ export const WineItemElement = styled.span`
   border-radius: 50px;
   display: inline-block;
   margin-right: 1em;
-  background: grey;
   font-size: 0.7em;
   :active {
     background: ${colors.main};
@@ -391,15 +390,15 @@ export const WineItemElement = styled.span`
 export const SubCategoryFilterContainer = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-flow: row;
   align-items: center;
+  text-align: center;
   justify-content: center;
-  flex-wrap: wrap;
   color: ${colors.main};
-  font-family: "Lora";
-  font-size: 1em;
+  font-family: "poppins";
+  font-size: 0.8rem;
   transition: all 0.5s ease;
-  margin: 8px auto;
+  margin: 5px auto;
 
   @keyframes appearSubCategory {
     0% {
@@ -430,7 +429,7 @@ export const SubCategoryFilterContainer = styled.div`
     transition: all 0.5s ease-in-out;
     transform: scale(1.2);
     -webkit-transform: scale(1.2);
-    animation: moveAndScale 0.2s ease-in-out;
+    // animation: moveAndScale 0.2s ease-in-out;
     @keyframes moveAndScale {
       0% {
         transform: translateY(0px) scale(1);
@@ -462,7 +461,7 @@ export const SubCategoryFilterContainer = styled.div`
   }
   .menu {
     width: calc(100% - 30%);
-    margin: 3px 6px;
+    margin: 3px 3px;
     cursor: pointer;
     align-self: center;
     vertical-align: bottom;

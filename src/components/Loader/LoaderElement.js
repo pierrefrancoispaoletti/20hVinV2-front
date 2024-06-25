@@ -1,22 +1,15 @@
 import React from "react";
 import { LoaderContainer } from "./Loader.style";
+import coeur from "../../assets/images/COEUR_TDO.gif";
 
 const LoaderElement = () => {
   return (
-    <LoaderContainer className="loader">
-      <span>C</span>
-      <span>H</span>
-      <span>A</span>
-      <span>R</span>
-      <span>G</span>
-      <span>E</span>
-      <span>M</span>
-      <span>E</span>
-      <span>N</span>
-      <span>T</span>
-      <span>.</span>
-      <span>.</span>
-      <span>.</span>
+    <LoaderContainer className='loader'>
+      <img
+        src={coeur}
+        alt='coeur'
+        width={"80%"}
+      />
     </LoaderContainer>
   );
 };

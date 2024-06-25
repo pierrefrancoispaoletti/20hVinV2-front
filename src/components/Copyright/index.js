@@ -16,71 +16,88 @@ const Copyright = () => {
       <div>
         <h3>Retrouvez nous sur : </h3>
       </div>
-      <div className="footer__icons">
-        <a target="_blank" href={facebook} rel="noreferrer">
+      <div className='footer__icons'>
+        <a
+          target='_blank'
+          href={facebook}
+          rel='noreferrer'
+        >
           <FontAwesomeIcon
             style={{
-              color: "black",
+              color: "white",
               background: "transparent",
               borderRadius: "100%",
             }}
-            size="3x"
+            size='2x'
             icon={faFacebook}
-            pull="left"
+            pull='left'
           />
         </a>
-        <a target="_blank" href={instagram} rel="noreferrer">
+        <a
+          target='_blank'
+          href={instagram}
+          rel='noreferrer'
+        >
           <FontAwesomeIcon
-            style={{ color: "black", borderRadius: "100%" }}
-            size="3x"
+            style={{ color: "white", borderRadius: "100%" }}
+            size='2x'
             icon={faInstagram}
-            pull="right"
+            pull='right'
           />
         </a>
       </div>
       <div>
         <h3>Contactez nous ! </h3>
       </div>
-      <div className="footer__icons">
+      <div className='footer__icons'>
         <a href={`mailto:${mail}`}>
           <FontAwesomeIcon
             style={{
-              color: "black",
+              color: "white",
             }}
-            size="3x"
+            size='2x'
             icon={faEnvelope}
-            pull="left"
+            pull='left'
           />
         </a>
         <a href={`tel:${phoneNumber}`}>
           <FontAwesomeIcon
             style={{
-              color: "black",
+              color: "white",
             }}
-            size="3x"
+            size='2x'
             icon={faPhone}
           />
         </a>
       </div>
-      <div className="footer__copyright" style={{ color: "white" }}>
+      <div
+        className='footer__copyright'
+        style={{ color: "white" }}
+      >
         {"Copyright © "}
-        <a className="link" href={url}>
-          <span>20hVin&nbsp;</span>
+        <a
+          className='link'
+          href={url}
+        >
+          <span>Le TDO&nbsp;</span>
         </a>
         <span>{` ${new Date().getFullYear()}. `}</span>
       </div>
-      <div className="footer__alvp">
-        <a className="link" href="mailto:pef@alvp-developments.com">
+      {/* <div className='footer__alvp'>
+        <a
+          className='link'
+          href='mailto:pef@alvp-developments.com'
+        >
           Made with
           <FontAwesomeIcon
-            className="alvp__icon"
-            color="darkred"
+            className='alvp__icon'
+            color='darkred'
             icon={faHeart}
-            size="2x"
+            size='2x'
           />
           by ALVP-Developments Ajaccio
         </a>
-      </div>
+      </div> */}
     </CopyrightStyled>
   );
 };

@@ -40,7 +40,6 @@ const ProductModal = ({ currentCategory }) => {
       { value: "rouge", isChecked: false, price: "" },
       { value: "blanc", isChecked: false, price: "" },
       { value: "rosé", isChecked: false, price: "" },
-      { value: "au verre", isChecked: false, price: "" },
     ],
     subCategory: "",
   };
@@ -64,18 +63,24 @@ const ProductModal = ({ currentCategory }) => {
   }, [currentCategory, productToEdit, type, open]);
 
   const currentCategoryObject = categories.find(
-    (category) => category.slug === currentCategory
+    (category) => category.slug === currentCategory,
   );
 
   return (
-    <AddProductModalContainer open={open} className="modal">
+    <AddProductModalContainer
+      open={open}
+      className='modal'
+    >
       <AddProductTitle>
         <h3>{`${type?.toUpperCase()}`}</h3>
         <CloseIconButton
-          type="button"
+          type='button'
           onClick={() => dispatch(toggleModal(type))}
         >
-          <FontAwesomeIcon icon={faTimes} size="1x" />
+          <FontAwesomeIcon
+            icon={faTimes}
+            size='1x'
+          />
         </CloseIconButton>
       </AddProductTitle>
       <ProductModalForm
