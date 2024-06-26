@@ -1,15 +1,27 @@
+import {
+  faCookie,
+  faMartiniGlass,
+  faMugSaucer,
+  faPizzaSlice,
+  faUtensils,
+  faWhiskeyGlass,
+  faWineBottle,
+} from "@fortawesome/free-solid-svg-icons";
+
 const logoSmall = "20px";
 export const categories = [
   {
     name: "Pizze Al Forno",
-    link: "/",
+    link: "/products/pizze",
     slug: "pizze",
+    icon: faPizzaSlice,
   },
   {
     name: "La Cuisine",
     title: "La Cuisine",
     link: "/products/cuisine",
     slug: "cuisine",
+    icon: faUtensils,
     subCategory: [
       { name: "Antipasti", slug: "antipasti" },
       { name: "Pesce", slug: "pesce" },
@@ -22,11 +34,13 @@ export const categories = [
     title: "Dolce",
     link: "/products/dolce",
     slug: "dolce",
+    icon: faCookie,
   },
   {
     name: "Les Boissons",
     link: "/products/boissons",
     slug: "boissons",
+    icon: faMugSaucer,
     subCategory: [
       { name: "Apéritifs", slug: "aperitifs" },
       { name: "Eaux", slug: "eaux" },
@@ -37,6 +51,7 @@ export const categories = [
     name: "Les Cocktails",
     link: "/products/cocktails",
     slug: "cocktails",
+    icon: faMartiniGlass,
     subCategory: [
       { name: "Cocktails Classiques", slug: "cocktails-classiques" },
       { name: "Cocktails Création", slug: "cocktails-creations" },
@@ -46,6 +61,7 @@ export const categories = [
     name: "Les Spiritueux",
     link: "/products/spiritueux",
     slug: "spiritueux",
+    icon: faWhiskeyGlass,
     subCategory: [
       { name: "Gin", slug: "gins" },
       { name: "Rhum", slug: "rhum" },
@@ -58,6 +74,7 @@ export const categories = [
     name: "La Vinothéque",
     link: "/products/cave",
     slug: "cave",
+    icon: faWineBottle,
     subCategory: [
       { name: "Vins Corse", slug: "vins-corse" },
       { name: "Vins Français", slug: "vins-fr" },

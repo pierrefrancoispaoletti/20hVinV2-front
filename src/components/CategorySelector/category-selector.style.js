@@ -3,16 +3,24 @@ import styled from "styled-components";
 import { colors } from "../../_const";
 
 export const CategoriesContainer = styled.nav`
+  margin: 50px auto;
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  flex-wrap: wrap;
   padding: 8px 0px;
-  overflow-x: auto;
 `;
 
 export const ListContainer = styled.ul`
   padding: 0px 8px;
   margin: auto;
   display: flex;
-  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
   list-style: none;
 `;
 export const CategoryItem = styled.li`
@@ -22,15 +30,16 @@ export const CategoryItem = styled.li`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 60px;
-  height: 60px;
-  margin: 0px 8px;
+  width: 75px;
+  height: 75px;
+  margin: 0px;
   background: ${colors.gold};
   border: 3px solid ${colors.ecriture};
-  border-radius: 100%;
+  border-radius: 10%;
   padding: 6px;
   box-shadow: 0px 9px 15px -5px rgba(0, 0, 0, 0.58);
   transition: all 0.5s;
+  text-align: center;
 `;
 
 export const IconWrapper = styled.div`

@@ -8,24 +8,27 @@ import {
   LinkContainer,
   ListContainer,
 } from "./category-selector.style";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const CategorySelector = () => {
   return (
     <CategoriesContainer>
       <ListContainer>
         {categories.map((category) => (
-          <LinkContainer to={category.link} key={category.name}>
+          <LinkContainer
+            to={category.link}
+            key={category.name}
+          >
             <CategoryItem>
               <IconWrapper>
-                {category?.logo ? (
-                  <img
-                    style={category.style}
-                    width={category?.widthCategorySelector}
-                    src={category?.logoAlt ? category?.logoAlt : category?.logo}
-                    alt={category.alt}
+                {category?.icon ? (
+                  <FontAwesomeIcon
+                    icon={category.icon}
+                    color='white'
+                    size='3x'
                   />
                 ) : (
-                  category.icon
+                  <span></span>
                 )}
               </IconWrapper>
               <CategoryTitle>{category.name}</CategoryTitle>

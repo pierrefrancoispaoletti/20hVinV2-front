@@ -27,6 +27,13 @@ const ProductModal = ({ currentCategory }) => {
   const { type, open } = useSelector(selectModalType);
   const productToEdit = useSelector(selectProductToEdit);
 
+  const [scrollPosition, setScrollPosition] = useState(0);
+  useEffect(() => {
+    if (open) {
+      setScrollPosition(window.scrollY);
+    }
+  }, [open]);
+
   const dispatch = useDispatch();
   const initialState = {
     _id: "",
@@ -70,6 +77,7 @@ const ProductModal = ({ currentCategory }) => {
     <AddProductModalContainer
       open={open}
       className='modal'
+      scrollPosition={scrollPosition}
     >
       <AddProductTitle>
         <h3>{`${type?.toUpperCase()}`}</h3>

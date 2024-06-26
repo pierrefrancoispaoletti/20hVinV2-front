@@ -4,10 +4,12 @@ import ImageElement from "../ImageElement/ImageElement";
 import Loginbutton from "../LoginButton/LoginButton";
 import { HeaderContainer } from "./header.style";
 import logo from "../../assets/images/logo.png";
+import BackHomeButton from "../BackHomeButton/BackHomeButton";
 
 const Header = () => {
   return (
     <HeaderContainer>
+      <BackHomeButton />
       <Link to='/'>
         <div>
           <ImageElement

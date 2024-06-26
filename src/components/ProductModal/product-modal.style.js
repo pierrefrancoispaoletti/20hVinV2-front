@@ -40,7 +40,8 @@ const isDisabled = (props) => {
 export const AddProductModalContainer = styled.div`
   position: fixed;
   z-index: 18;
-  top: 10px;
+  top: ${(props) =>
+    props.scrollPosition + 10}px; // Utilisation de la position de défilement
   left: 0;
   right: 0;
   background: rgba(255, 255, 255, 0.9);
@@ -50,8 +51,7 @@ export const AddProductModalContainer = styled.div`
   border-radius: 12px;
   border: 2px solid ${colors.main};
   align-items: center;
-  ${isShownModal}
-  & > form {
+  ${isShownModal} & > form {
     width: 80%;
   }
   margin: 15px 15px;

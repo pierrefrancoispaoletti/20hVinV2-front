@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   OpenSubMenuChevron,
   SubCategoryFilterContainer,
@@ -8,14 +8,14 @@ import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 const SubCategorySelector = ({ filter, findCategory, setFilter }) => {
   const [open, setOpen] = useState(false);
 
+  useEffect(() => {
+    if (findCategory?.subCategory?.length > 0 && filter === "") {
+      setFilter(findCategory.subCategory[0].slug);
+    }
+  });
+
   const handleSetFilter = (value) => {
     setFilter(value);
-    // if (value === "") {
-    //   const selectedMenuItem = document.querySelector(".menu.selected");
-    //   if (selectedMenuItem) {
-    //     selectedMenuItem.parentElement.prepend(selectedMenuItem);
-    //   }
-    // }
   };
 
   return (
@@ -28,8 +28,14 @@ const SubCategorySelector = ({ filter, findCategory, setFilter }) => {
           className={`menu ${filter === sub.slug ? "selected" : ""}`}
           onClick={() => handleSetFilter(sub.slug)}
         >
-          <span className="subcategory-name">{sub.name}</span>
-          {sub.logo && <img width={sub.width} src={sub.logo} alt={sub.alt} />}
+          <span className='subcategory-name'>{sub.name}</span>
+          {sub.logo && (
+            <img
+              width={sub.width}
+              src={sub.logo}
+              alt={sub.alt}
+            />
+          )}
         </div>
       ))}
     </SubCategoryFilterContainer>

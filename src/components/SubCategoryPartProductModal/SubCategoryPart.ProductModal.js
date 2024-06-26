@@ -4,9 +4,9 @@ import { colors } from "../../_const";
 
 const SubCategoryContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-items: center;
   align-items: center;
-  flex-flow: row wrap;
   padding: 20px;
 `;
 

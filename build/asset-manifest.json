@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/static/css/main.402d208e.css",
-    "main.js": "/static/js/main.f247e25f.js",
+    "main.js": "/static/js/main.d088a5fe.js",
     "static/js/59.9955e3c3.chunk.js": "/static/js/59.9955e3c3.chunk.js",
-    "static/js/553.6801686e.chunk.js": "/static/js/553.6801686e.chunk.js",
+    "static/js/96.3b7d1f88.chunk.js": "/static/js/96.3b7d1f88.chunk.js",
     "static/media/crayonhand.ttf": "/static/media/crayonhand.f8408bf787fcd295193a.ttf",
     "static/media/COEUR_TDO.gif": "/static/media/COEUR_TDO.8bdc14476c30e70dc853.gif",
     "static/media/Poppins-Light.ttf": "/static/media/Poppins-Light.f41b63c0bb0963ace821.ttf",
@@ -15,12 +15,12 @@
     "static/media/logo.png": "/static/media/logo.f57f4a1fdae36a01294d.png",
     "index.html": "/index.html",
     "main.402d208e.css.map": "/static/css/main.402d208e.css.map",
-    "main.f247e25f.js.map": "/static/js/main.f247e25f.js.map",
+    "main.d088a5fe.js.map": "/static/js/main.d088a5fe.js.map",
     "59.9955e3c3.chunk.js.map": "/static/js/59.9955e3c3.chunk.js.map",
-    "553.6801686e.chunk.js.map": "/static/js/553.6801686e.chunk.js.map"
+    "96.3b7d1f88.chunk.js.map": "/static/js/96.3b7d1f88.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.402d208e.css",
-    "static/js/main.f247e25f.js"
+    "static/js/main.d088a5fe.js"
   ]
 }

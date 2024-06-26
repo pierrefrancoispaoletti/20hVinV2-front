@@ -4,14 +4,12 @@ import { useParams } from "react-router-dom";
 import ProductOverview from "../../components/ProductOverview/ProductOverview";
 import { selectProductsBySubCategory } from "../../redux/reducers/Products/selectors";
 import useFetchProducts from "../../useFetchProducts/useFetchProducts";
-import useRemoveDuplicateSpans from "../../useRemoveDuplicateSpans/useRemoveDuplicateSpans";
 
 const ProductsPage = ({ loading, setLoading }) => {
   const params = useParams();
-
   let category = params.category || "pizze";
   useFetchProducts(setLoading, category);
-  //  useRemoveDuplicateSpans();
+
   const [filter, setFilter] = useState("");
   const products = useSelector(selectProductsBySubCategory(filter, category));
 
