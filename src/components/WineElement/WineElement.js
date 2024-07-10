@@ -38,7 +38,6 @@ const WineElement = ({ couleur, wineContent }) => {
                   wrap: "wrap",
                   justifyContent: "center",
                   color: getWineColor(color.value),
-                  margin: "5px",
                 }}
               >
                 <span>

@@ -30,16 +30,22 @@ const ProductElement = ({ product, index, length }) => {
       last={index === length - 1}
     >
       {user && user.role === "isAdmin" && (
-        <AdminButtonBar _id={_id} product={product} />
+        <AdminButtonBar
+          _id={_id}
+          product={product}
+        />
       )}
-      <h3 className="title">
+      <h3 className='title'>
         <span style={{ display: "inline-block" }}>{`${
           visible ? "" : "CACHÉ : "
-        } ${title}`}</span>
+        }${title}`}</span>
         {category !== "cave" || couleur.every((color) => !color.isChecked) ? (
-          <span className="price">{price?.toFixed(2)} €</span>
+          <span className='price'>{price?.toFixed(2)} €</span>
         ) : (
-          <WineElement couleur={couleur} wineContent={wineContent} />
+          <WineElement
+            couleur={couleur}
+            wineContent={wineContent}
+          />
         )}
       </h3>
       {/* <WineColorContainer>
@@ -52,7 +58,7 @@ const ProductElement = ({ product, index, length }) => {
             )
         )}
       </WineColorContainer> */}
-      <p className="description">
+      <p className='description'>
         {description?.length > 0 && (
           <TranslatorComponent>
             {description?.replace("\n", " ")}

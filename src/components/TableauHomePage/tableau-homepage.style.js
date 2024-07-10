@@ -281,49 +281,33 @@ export const TableauContent = styled.div`
   line-height: 22px;
   color: ${colors.main};
   margin: auto;
-  text-align: center;
+  text-align: left;
   font-size: 1.8rem;
-  @media (max-width: 420px) {
-    align-items: center;
-  }
   ${contentVisible}
   ${isLastInHome}
 
   .title {
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
-    align-items: flex-start;
     color: ${colors.main};
     letter-spacing: 2px;
     text-transform: uppercase;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     font-family: "poppins-bold";
-    margin: 8px auto;
     font-weight: bold;
     & > span {
       width: 100%;
-      text-align: left;
-    }
-    @media (max-width: 420px) {
-      & > span {
-        text-align: center;
-      }
-      justify-content: center;
-      align-items: center;
+      white-space: pre-wrap;
     }
   }
 
   .price {
+    display: flex;
+    justify-content: flex-end;
     font-family: "poppins";
-    /* :not(.wineprice) {
-      border-bottom: 1px solid ${colors.main};
-    } */
     font-size: 0.9rem;
-    @media (max-width: 370px) {
-      font-size: 1rem;
-    }
+    text-align: right;
   }
 
   .description {
@@ -332,9 +316,6 @@ export const TableauContent = styled.div`
     margin: 0;
     font-size: 0.9rem;
     white-space: pre-wrap;
-    @media (min-width: 415px) {
-      white-space: normal;
-    }
   }
 
   .wine-color {
@@ -347,11 +328,10 @@ export const WineColorContainer = styled.div``;
 
 export const WinePriceContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-direction: column;
   text-align: right;
-  justify-content: center;
-  vertical-align: baseline;
+  justify-content: flex-end;
+  align-items: flex-end;
   width: 100%;
   font-size: 0.8rem;
   font-family: "poppins";
@@ -359,11 +339,11 @@ export const WinePriceContainer = styled.div`
 `;
 
 export const WinePriceElement = styled.span`
-  display: inline-block;
-  align-self: center;
-  margin-bottom: 8px;
-  text-align: center;
-  width: 35%;
+  display: flex;
+  font-family: "poppins";
+  vertical-align: middle;
+  font-size: 0.9rem;
+  text-align: right;
   ${getWineColor};
 `;
 

@@ -54,7 +54,7 @@ export const categories = [
     icon: faMartiniGlass,
     subCategory: [
       { name: "Cocktails Classiques", slug: "cocktails-classiques" },
-      { name: "Cocktails Création", slug: "cocktails-creations" },
+      { name: "Cocktails Créations", slug: "cocktails-creations" },
     ],
   },
   {
