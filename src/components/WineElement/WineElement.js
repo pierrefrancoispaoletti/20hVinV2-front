@@ -11,7 +11,7 @@ const WineElement = ({ couleur, wineContent }) => {
   const getWineColor = (couleur) => {
     switch (couleur) {
       case "rouge":
-        return "#f25957";
+        return "#8e1318";
       case "blanc":
         return "#f1f285";
       case "rosé":

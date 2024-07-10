@@ -181,7 +181,7 @@ const getWineColor = (props) => {
   switch (props.color) {
     case "rouge":
       return css`
-        color: #742f37;
+        color: #d13847;
       `;
     case "blanc":
       return css`
@@ -196,13 +196,13 @@ const getWineColor = (props) => {
   }
 };
 
-const hexToRGB = (hex) => {
+const hexToRGB = (hex, trsp = 0.6) => {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result
     ? `rgba(${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(
         result[3],
         16,
-      )}, 0.6)`
+      )},${trsp})`
     : null;
 };
 
@@ -243,7 +243,7 @@ export const TableauWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: ${hexToRGB("#484b56")};
+  background-color: #6f7177;
   min-height: 80vh;
   ${getTransitionType}
 `;
@@ -290,23 +290,24 @@ export const TableauContent = styled.div`
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     color: ${colors.main};
     letter-spacing: 2px;
     text-transform: uppercase;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-family: "poppins-bold";
     font-weight: bold;
     & > span {
       width: 100%;
-      white-space: pre-wrap;
+      white-space: normal;
     }
   }
 
   .price {
     display: flex;
     justify-content: flex-end;
-    font-family: "poppins";
-    font-size: 0.9rem;
+    font-family: "poppins-bold";
+    font-size: 1rem;
     text-align: right;
   }
 
@@ -333,8 +334,9 @@ export const WinePriceContainer = styled.div`
   justify-content: flex-end;
   align-items: flex-end;
   width: 100%;
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-family: "poppins";
+  font-weight: bold;
   ${getWineColor};
 `;
 
@@ -342,7 +344,7 @@ export const WinePriceElement = styled.span`
   display: flex;
   font-family: "poppins";
   vertical-align: middle;
-  font-size: 0.9rem;
+  font-size: 1rem;
   text-align: right;
   ${getWineColor};
 `;
