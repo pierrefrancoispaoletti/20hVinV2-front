@@ -294,7 +294,7 @@ export const TableauContent = styled.div`
     color: ${colors.main};
     letter-spacing: 2px;
     text-transform: uppercase;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-family: "poppins-bold";
     font-weight: bold;
     & > span {
@@ -307,7 +307,8 @@ export const TableauContent = styled.div`
     display: flex;
     justify-content: flex-end;
     font-family: "poppins-bold";
-    font-size: 1rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0);
+    font-size: 0.9rem;
     text-align: right;
   }
 
