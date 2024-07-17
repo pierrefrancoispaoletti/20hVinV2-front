@@ -40,8 +40,7 @@ const isDisabled = (props) => {
 export const AddProductModalContainer = styled.div`
   position: fixed;
   z-index: 18;
-  top: ${(props) =>
-    props.scrollPosition + 10}px; // Utilisation de la position de défilement
+  top: 0; // Utilisation de la position de défilement
   left: 0;
   right: 0;
   background: rgba(255, 255, 255, 0.9);
