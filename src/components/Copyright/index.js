@@ -17,7 +17,7 @@ const Copyright = () => {
         <h3>Retrouvez nous sur : </h3>
       </div>
       <div className='footer__icons'>
-        <a
+        {/* <a
           target='_blank'
           href={facebook}
           rel='noreferrer'
@@ -32,7 +32,7 @@ const Copyright = () => {
             icon={faFacebook}
             pull='left'
           />
-        </a>
+        </a> */}
         <a
           target='_blank'
           href={instagram}

@@ -23,6 +23,6 @@ export const facebook =
 export const instagram =
   "https://www.instagram.com/le_temps_des_oliviers/?hl=fr";
 export const url = "https://la-carte.le-tdo.com/";
-export const mail = "vannina.giorgi@hotmail.fr";
+export const mail = "letempsdesoliviers@hotmail.fr";
 
 export const GOOGLE_API_KEY = "";
