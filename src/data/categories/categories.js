@@ -7,9 +7,26 @@ import logoBoissons from "../../assets/images/boissons.png";
 const logoSmall = "20px";
 export const categories = [
   {
+    name: "Evenements",
+    title: "Événements",
+    link: "/products/evenements",
+    slug: "evenements",
+  },
+  {
+    name: "Suggestions",
+    link: "/",
+    slug: "suggestions",
+  },
+  {
+    name: "Créations",
+    title: "Nos créations",
+    link: "/products/creations",
+    slug: "creations",
+  },
+  {
     name: "Côté Apéro",
     legend: "( à partager... ou pas ... )",
-    link: "/",
+    link: "/products/apero",
     slug: "apero",
   },
   {
@@ -126,4 +143,10 @@ export const categories = [
   //   link: "/products/la-vitrine-sucree",
   //   slug: "la-vitrine-sucree",
   // },
+  {
+    name: "Evenements",
+    title: "Événements",
+    link: "/products/evenements",
+    slug: "evenements",
+  },
 ];

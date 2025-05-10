@@ -7,8 +7,17 @@ import WineElement from "../WineElement/WineElement";
 import TranslatorComponent from "../TranslatorComponent/TranslatorComponent";
 
 const ProductElement = ({ product, index, length }) => {
-  const { _id, price, description, title, visible, category, couleur } =
-    product;
+  const {
+    _id,
+    price,
+    description,
+    title,
+    visible,
+    category,
+    couleur,
+    date,
+    heure,
+  } = product;
   const user = useSelector(selectCurrentUser);
 
   const wineContent = (couleur) => {
@@ -36,7 +45,13 @@ const ProductElement = ({ product, index, length }) => {
         <span style={{ display: "inline-block" }}>{`${
           visible ? "" : "CACHÉ : "
         } ${title}`}</span>
-        {category !== "cave" || couleur.every((color) => !color.isChecked) ? (
+        {category === "evenements" ? (
+          <span className="price">
+            {date ? `Le ${new Date(date).toLocaleDateString()}` : ""}
+            {heure ? ` à ${heure}` : ""}
+          </span>
+        ) : category !== "cave" ||
+          couleur.every((color) => !color.isChecked) ? (
           <span className="price">{price?.toFixed(2)} €</span>
         ) : (
           <WineElement couleur={couleur} wineContent={wineContent} />

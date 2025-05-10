@@ -27,6 +27,8 @@ const ProductModalForm = ({
     visible,
     couleur,
     subCategory,
+    date,
+    heure,
   } = product;
 
   const clearState = () => setProduct({ ...initialState });
@@ -47,6 +49,8 @@ const ProductModalForm = ({
       visible,
       couleur,
       subCategory,
+      date,
+      heure,
     };
     if (type === "ajouter") {
       addProduct(newProduct, dispatch, token).then(() => clearState());
@@ -63,7 +67,9 @@ const ProductModalForm = ({
       <FormInput
         type="text"
         name="title"
-        label="Nom du produit"
+        label={
+          category === "evenements" ? "Nom de l'événement" : "Nom du produit"
+        }
         value={title}
         handleChange={handleChange}
         required
@@ -79,23 +85,59 @@ const ProductModalForm = ({
         value={description}
         onChange={handleChange}
       />
-      <FormInput
-        type="number"
-        name="price"
-        pattern="\\d*"
-        step={0.1}
-        handleChange={handleChange}
-        label="Prix"
-        value={price}
-        required
-      />
+      {category === "evenements" ? (
+        <>
+          <FormInput
+            type="date"
+            name="date"
+            label="Date de l'événement"
+            value={date || ""}
+            inputProps={{
+              type: "date",
+              shrink: false,
+            }}
+            handleChange={handleChange}
+            required
+          />
+          <FormInput
+            type="time"
+            name="heure"
+            label="Heure de l'événement"
+            value={heure || ""}
+            handleChange={handleChange}
+            inputProps={{
+              type: "time",
+              shrink: false,
+            }}
+            required
+          />
+        </>
+      ) : (
+        <FormInput
+          type="number"
+          name="price"
+          pattern="\\d*"
+          step={0.1}
+          handleChange={handleChange}
+          label="Prix"
+          value={price}
+          required
+        />
+      )}
       {children}
       <AddProductButtonStyled
-        disabled={!title || !price || !category || !location}
+        disabled={
+          !title ||
+          (category === "evenements" ? !date || !heure : !price) ||
+          !category ||
+          !location
+        }
         type="submit"
         modalType={type}
       >
-        {`${type} un produit`?.toUpperCase()}
+        {`${type} ${
+          category === "evenements" ? "un événement" : "un produit"
+        }`?.toUpperCase()}
       </AddProductButtonStyled>
     </form>
   );

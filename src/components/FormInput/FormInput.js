@@ -7,11 +7,15 @@ import {
 } from "./form-input.style";
 
 const FormInput = ({ handleChange, label, ...others }) => {
+  const isClassicLabel =
+    others.name === "subCategory" ||
+    others.type === "date" ||
+    others.type === "time";
   return (
     <GroupContainer>
-      {others.name === "subCategory" && <label htmlFor={label}>{label}</label>}
+      {isClassicLabel && <label htmlFor={label}>{label}</label>}
       <FormInputContainer onChange={handleChange} {...others} />
-      {label && others.name !== "subCategory" && (
+      {label && !isClassicLabel && (
         <LabelContainer
           htmlFor=""
           className={`${
