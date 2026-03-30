@@ -5,23 +5,23 @@ import {
   WinePriceElement,
 } from "../TableauHomePage/tableau-homepage.style";
 import { faWineBottle, faWineGlass } from "@fortawesome/free-solid-svg-icons";
-import { colors } from "../../_const";
 
 const WineElement = ({ couleur, wineContent }) => {
   const getWineColor = (couleur) => {
     switch (couleur) {
       case "rouge":
-        return "#742f37";
+        return "#a04050";
       case "blanc":
-        return "#f1f285";
+        return "#d4c44a";
       case "rosé":
         return "#ffb9b9";
       case "au verre":
-        return "white";
+        return "#f4ba9a";
       default:
-        return colors.ecriture;
+        return "#e8e3dc";
     }
   };
+
   return (
     <WinePriceContainer>
       {couleur.map(
@@ -32,31 +32,14 @@ const WineElement = ({ couleur, wineContent }) => {
               key={color.value}
               color={color.value}
             >
-              <div
-                style={{
-                  display: "flex",
-                  wrap: "wrap",
-                  justifyContent: "center",
-                  color: getWineColor(color.value),
-                  background: "grey",
-                  margin: "5px",
-                  border: "1px solid white",
-                }}
-              >
-                <span>
-                  <FontAwesomeIcon
-                    icon={
-                      getWineColor(color.value) !== "white"
-                        ? faWineBottle
-                        : faWineGlass
-                    }
-                    size="1x"
-                  />
-                </span>
-                <span style={{ display: "inline-block", paddingLeft: "8px" }}>
-                  {Number(color.price).toFixed(2)}€
-                </span>
-              </div>
+              <FontAwesomeIcon
+                icon={
+                  color.value !== "au verre" ? faWineBottle : faWineGlass
+                }
+                size="1x"
+                style={{ color: getWineColor(color.value), marginRight: 6 }}
+              />
+              <span>{Number(color.price).toFixed(2)}€</span>
             </WinePriceElement>
           )
       )}

@@ -10,6 +10,8 @@ import {
   faChevronRight,
   faTimes,
   faPlus,
+  faPen,
+  faCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import { selectCategories } from "../../redux/reducers/Categories/selectors";
 import { selectCurrentUser } from "../../redux/reducers/User/selector";
@@ -57,10 +59,39 @@ const CategoryAdmin = () => {
   const token = user?.token;
 
   const [expandedSlug, setExpandedSlug] = useState(null);
+  const [editingId, setEditingId] = useState(null);
+  const [editForm, setEditForm] = useState({});
   const [newSubName, setNewSubName] = useState("");
   const [newSubSlug, setNewSubSlug] = useState("");
   const [form, setForm] = useState(EMPTY_FORM);
   const [showForm, setShowForm] = useState(false);
+
+  const handleStartEdit = (cat) => {
+    setEditingId(cat._id);
+    setEditForm({
+      name: cat.name || "",
+      slug: cat.slug || "",
+      title: cat.title || "",
+      legend: cat.legend || "",
+      availableAt: cat.availableAt || "always",
+    });
+  };
+
+  const handleCancelEdit = () => {
+    setEditingId(null);
+    setEditForm({});
+  };
+
+  const handleSaveEdit = (cat) => {
+    updateCategory({ _id: cat._id, ...editForm }, dispatch, token);
+    setEditingId(null);
+    setEditForm({});
+  };
+
+  const handleEditChange = (e) => {
+    const { name, value } = e.target;
+    setEditForm((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleToggleVisible = (cat) => {
     updateCategory({ _id: cat._id, isVisible: !cat.isVisible }, dispatch, token);
@@ -175,6 +206,14 @@ const CategoryAdmin = () => {
 
             <IconButton
               type="button"
+              onClick={() => handleStartEdit(cat)}
+              title="Modifier"
+            >
+              <FontAwesomeIcon icon={faPen} size="sm" color="#f4ba9a" />
+            </IconButton>
+
+            <IconButton
+              type="button"
               onClick={() => handleMoveUp(index)}
               disabled={index === 0}
             >
@@ -194,7 +233,88 @@ const CategoryAdmin = () => {
             </IconButton>
           </CategoryRow>
 
-          {expandedSlug === cat.slug && (
+          {/* Edit form inline */}
+          {editingId === cat._id && (
+            <SubCategoryPanel>
+              <FormLabel style={{ marginBottom: 10 }}>Modifier la catégorie</FormLabel>
+              <div style={{ display: "grid", gap: 10 }}>
+                <SubCategoryInline>
+                  <FormGroup style={{ flex: 1 }}>
+                    <FormLabel>Nom</FormLabel>
+                    <FormField
+                      name="name"
+                      value={editForm.name}
+                      onChange={handleEditChange}
+                    />
+                  </FormGroup>
+                  <FormGroup style={{ flex: 1 }}>
+                    <FormLabel>Slug</FormLabel>
+                    <FormField
+                      name="slug"
+                      value={editForm.slug}
+                      onChange={handleEditChange}
+                    />
+                  </FormGroup>
+                </SubCategoryInline>
+                <SubCategoryInline>
+                  <FormGroup style={{ flex: 1 }}>
+                    <FormLabel>Titre de page</FormLabel>
+                    <FormField
+                      name="title"
+                      placeholder="Titre affiché en haut"
+                      value={editForm.title}
+                      onChange={handleEditChange}
+                    />
+                  </FormGroup>
+                </SubCategoryInline>
+                <SubCategoryInline>
+                  <FormGroup style={{ flex: 1 }}>
+                    <FormLabel>Légende</FormLabel>
+                    <FormField
+                      name="legend"
+                      placeholder="Texte sous le titre"
+                      value={editForm.legend}
+                      onChange={handleEditChange}
+                    />
+                  </FormGroup>
+                </SubCategoryInline>
+                <SubCategoryInline>
+                  <FormGroup style={{ flex: 1 }}>
+                    <FormLabel>Disponibilité</FormLabel>
+                    <FormSelect
+                      name="availableAt"
+                      value={editForm.availableAt}
+                      onChange={handleEditChange}
+                    >
+                      <option value="always">Toujours</option>
+                      <option value="midi">Midi</option>
+                      <option value="soir">Soir</option>
+                    </FormSelect>
+                  </FormGroup>
+                </SubCategoryInline>
+                <div style={{ display: "flex", gap: 8, marginTop: 4 }}>
+                  <SubmitButton
+                    type="button"
+                    onClick={() => handleSaveEdit(cat)}
+                    style={{ flex: 1 }}
+                  >
+                    <FontAwesomeIcon icon={faCheck} style={{ marginRight: 6 }} />
+                    Enregistrer
+                  </SubmitButton>
+                  <SubmitButton
+                    type="button"
+                    onClick={handleCancelEdit}
+                    style={{ flex: 0, background: "rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.5)" }}
+                  >
+                    Annuler
+                  </SubmitButton>
+                </div>
+              </div>
+            </SubCategoryPanel>
+          )}
+
+          {/* Subcategories panel */}
+          {expandedSlug === cat.slug && editingId !== cat._id && (
             <SubCategoryPanel>
               <SubCategoryArea>
                 {cat.subCategory?.length === 0 && (

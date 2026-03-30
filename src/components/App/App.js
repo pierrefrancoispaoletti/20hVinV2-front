@@ -35,8 +35,10 @@ const App = () => {
   return (
     <div
       style={{
-        margin: "0 0 25px 0",
+        margin: 0,
         paddingBottom: "80px",
+        background: "#1a1816",
+        minHeight: "100vh",
       }}
     >
       <Header />

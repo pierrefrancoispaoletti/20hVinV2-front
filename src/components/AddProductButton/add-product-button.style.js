@@ -2,13 +2,15 @@ import styled from "styled-components";
 import { colors } from "../../_const";
 
 export const AddProductButtonStyled = styled.button`
-  background: lightGreen;
-  border: 1px solid black;
+  background: #1a3a1a;
+  border: 1px solid #2d5a2d;
   border-radius: 50%;
   padding: 9px 12px;
-  transition: all 0.1s ease-in-out;
+  color: #8fbc8f;
+  cursor: pointer;
+  transition: all 0.2s ease;
   :active {
-    background: green;
-    color: ${colors.secondary};
+    background: #2d5a2d;
+    color: ${colors.main};
   }
 `;

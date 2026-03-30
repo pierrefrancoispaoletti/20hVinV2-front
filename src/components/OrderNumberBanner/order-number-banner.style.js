@@ -2,18 +2,16 @@ import styled from "styled-components";
 import { colors } from "../../_const";
 
 export const OrderBannerContainer = styled.div`
-  /* position: ${(props) => (props.top ? "relative" : "fixed")}; */
   width: 100%;
   color: ${colors.ecriture};
-  font-size: 1.5em;
+  font-size: 1.2em;
   margin-bottom: 12px;
-  font-spacing: 1.2;
   margin-top: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: "Lora";
+  font-family: 'Space Grotesk', sans-serif;
 
   & button {
     display: flex;
@@ -22,17 +20,18 @@ export const OrderBannerContainer = styled.div`
     height: 100%;
     align-items: center;
     align-self: center;
-    color: ${colors.main};
+    color: ${colors.ecriture};
     outline: none;
     border: none;
-    font-weight: bold;
+    font-weight: 600;
     background: transparent;
-    font-size: 1.2em;
+    font-size: 1em;
     margin: 0;
     padding: 0;
+    cursor: pointer;
     :active {
-      background: rgba(255, 255, 255, 0.4);
-      color: ${colors.secondary};
+      background: rgba(255, 255, 255, 0.05);
+      color: ${colors.accent};
     }
   }
 `;

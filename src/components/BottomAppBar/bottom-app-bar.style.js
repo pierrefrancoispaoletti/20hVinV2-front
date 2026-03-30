@@ -8,33 +8,38 @@ export const BarContainer = styled.nav`
   left: 0;
   right: 0;
   height: 64px;
-  background-color: ${colors.secondary};
+  background: linear-gradient(to top, ${colors.background} 70%, transparent);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 16px;
+  padding: 0 20px 6px;
   z-index: 1000;
-  box-shadow: 0 -3px 12px rgba(0, 0, 0, 0.35);
 `;
 
 export const BarGroup = styled.div`
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 `;
 
 export const BarButton = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.6);
-  color: white;
-  transition: background 0.15s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255,255,255,0.55);
+  transition: all 0.2s ease;
+  text-decoration: none;
+  &:hover {
+    border-color: ${colors.accent};
+    color: ${colors.accent};
+  }
   &:active {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    color: ${colors.accent};
   }
 `;
 
@@ -42,13 +47,19 @@ export const BarAnchor = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.6);
-  color: white;
-  transition: background 0.15s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255,255,255,0.55);
+  transition: all 0.2s ease;
+  text-decoration: none;
+  &:hover {
+    border-color: ${colors.accent};
+    color: ${colors.accent};
+  }
   &:active {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    color: ${colors.accent};
   }
 `;

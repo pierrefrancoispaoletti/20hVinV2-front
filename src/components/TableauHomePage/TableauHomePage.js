@@ -14,8 +14,9 @@ import ProductModal from "../ProductModal/ProductModal";
 import { selectCurrentUser } from "../../redux/reducers/User/selector";
 import SubCategorySelector from "../SubCategorySelector/SubCategorySelector";
 import { categoriesStyle2 } from "../../_const";
+import { WineColorFilter } from "../WineFilters/WineFilters";
 
-const TableauHomePage = ({ setFilter, children, filter }) => {
+const TableauHomePage = ({ setFilter, children, filter, wineColorFilter, setWineColorFilter }) => {
   const location = useLocation();
   const allCategories = useSelector(selectCategories);
   const user = useSelector(selectCurrentUser);
@@ -52,6 +53,12 @@ const TableauHomePage = ({ setFilter, children, filter }) => {
             filter={filter}
             findCategory={findCategory}
             setFilter={setFilter}
+          />
+        )}
+        {setWineColorFilter && (
+          <WineColorFilter
+            wineColorFilter={wineColorFilter}
+            setWineColorFilter={setWineColorFilter}
           />
         )}
         {user && user.role === "isAdmin" && (

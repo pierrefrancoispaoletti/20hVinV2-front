@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { colors } from "../../_const";
 
 const isVisible = (props) => {
   if (props.visible) {
@@ -34,13 +35,16 @@ export const LocalMessageContainer = styled.div`
 `;
 
 export const LocalMessageWrapper = styled.div`
-  background-color: lightGreen;
+  background-color: ${colors.surface};
   text-align: center;
-  font-size: 1em;
-  padding: 12px;
-  border-radius: 50px;
-  border: 3px solid green;
-  color: black;
+  font-size: 0.85rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: 1px solid ${colors.wine};
+  color: ${colors.accent};
   text-transform: uppercase;
-  box-shadow: 0px 9px 23px -5px rgba(0, 0, 0, 0.58);
+  letter-spacing: 1px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 `;

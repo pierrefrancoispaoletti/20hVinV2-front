@@ -4,7 +4,8 @@ import { colors } from "../../_const";
 const isDisabled = (props) => {
   if (props.disabled) {
     return css`
-      background: #ccc;
+      background: #333;
+      opacity: 0.5;
     `;
   }
 };
@@ -14,25 +15,16 @@ export const LoginContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-radius: 50px;
-  margin: 12px;
-  background: linear-gradient(to right, ${colors.main}, ${colors.secondary});
-  background-size: 400% 400%;
-  padding-bottom: 12px;
-  animation: backgroundMoving 25s infinite ease;
-  @keyframes backgroundMoving {
-    0% {
-      background-position: 92% 0%;
-    }
-    50% {
-      background-position: 9% 100%;
-    }
-    100% {
-      background-position: 92% 0%;
-    }
-  }
+  border-radius: 20px;
+  margin: 24px;
+  background: ${colors.surface};
+  border: 1px solid ${colors.border};
+  padding: 32px 24px;
   & > h2 {
-    color: ${colors.main};
+    color: ${colors.accent};
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 400;
+    margin-bottom: 16px;
   }
 `;
 
@@ -41,15 +33,24 @@ export const FormContainer = styled.form`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
 `;
 
 export const LoginButton = styled.button`
-  font-size: 2em;
-  background-color: transparent;
+  font-size: 1.2em;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  background-color: ${colors.wine};
   outline: none;
   color: ${colors.main};
-  border: 3px solid ${colors.main};
-  border-radius: 50px;
-  background: ${colors.secondary};
+  border: 1px solid ${colors.wine};
+  border-radius: 8px;
+  padding: 12px 32px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 1px;
+  &:hover {
+    filter: brightness(1.1);
+  }
   ${isDisabled}
 `;

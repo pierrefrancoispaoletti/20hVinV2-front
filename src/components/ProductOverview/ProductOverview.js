@@ -2,9 +2,9 @@ import React from "react";
 import LoaderElement from "../Loader/LoaderElement";
 import ProductElement from "../ProductElement/ProductElement";
 import TableauHomePage from "../TableauHomePage/TableauHomePage";
-const ProductOverview = ({ loading, products, setFilter, filter }) => {
+const ProductOverview = ({ loading, products, setFilter, filter, wineColorFilter, setWineColorFilter }) => {
   return (
-    <TableauHomePage setFilter={setFilter} filter={filter}>
+    <TableauHomePage setFilter={setFilter} filter={filter} wineColorFilter={wineColorFilter} setWineColorFilter={setWineColorFilter}>
       {loading ? (
         <LoaderElement />
       ) : (

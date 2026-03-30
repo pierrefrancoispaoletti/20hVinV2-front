@@ -8,23 +8,24 @@ export const AdminPanelContainer = styled.section`
 `;
 
 export const AdminPanelTitle = styled.h2`
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: white;
+  color: ${colors.accent};
+  font-family: 'Space Grotesk', sans-serif;
   margin: 16px 0 20px;
   padding-bottom: 10px;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid ${colors.border};
 `;
 
 export const CategoryCard = styled.div`
-  background: ${(props) => (props.invisible ? "#f5f5f0" : "white")};
+  background: ${(props) => (props.invisible ? "rgba(255,255,255,0.02)" : colors.surface)};
   border-radius: 12px;
   margin-bottom: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 1px solid ${colors.border};
   overflow: hidden;
-  opacity: ${(props) => (props.invisible ? 0.6 : 1)};
+  opacity: ${(props) => (props.invisible ? 0.5 : 1)};
   transition: opacity 0.2s ease;
 `;
 
@@ -37,22 +38,28 @@ export const CategoryRow = styled.div`
 
 export const CategoryName = styled.span`
   flex: 1;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 500;
-  color: ${(props) => (props.invisible ? "#999" : colors.ecriture)};
+  font-family: 'Space Grotesk', sans-serif;
+  color: ${(props) => (props.invisible ? "rgba(255,255,255,0.3)" : colors.ecriture)};
   text-decoration: ${(props) => (props.invisible ? "line-through" : "none")};
 `;
 
 export const AvailabilityBadge = styled.button`
   background-color: ${(props) =>
     props.slot === "midi"
-      ? "#4caf50"
+      ? "#2d5a2d"
       : props.slot === "soir"
-        ? "#ff9800"
+        ? "#5a3a0a"
         : colors.secondary};
-  color: white;
+  color: ${(props) =>
+    props.slot === "midi"
+      ? "#8fbc8f"
+      : props.slot === "soir"
+        ? "#ffb347"
+        : colors.main};
   border: none;
-  border-radius: 20px;
+  border-radius: 8px;
   padding: 4px 12px;
   font-size: 0.7rem;
   font-weight: 700;
@@ -61,8 +68,9 @@ export const AvailabilityBadge = styled.button`
   text-transform: uppercase;
   min-width: 64px;
   transition: filter 0.15s ease;
+  font-family: 'Space Grotesk', sans-serif;
   &:hover {
-    filter: brightness(1.1);
+    filter: brightness(1.2);
   }
 `;
 
@@ -72,10 +80,10 @@ export const IconButton = styled.button`
   cursor: pointer;
   padding: 6px;
   border-radius: 8px;
-  color: ${(props) => props.iconcolor || "#666"};
+  color: ${(props) => props.iconcolor || "rgba(255,255,255,0.4)"};
   transition: background 0.15s ease;
   &:hover:not(:disabled) {
-    background: rgba(0, 0, 0, 0.06);
+    background: rgba(255, 255, 255, 0.06);
   }
   &:disabled {
     opacity: 0.2;
@@ -84,8 +92,8 @@ export const IconButton = styled.button`
 `;
 
 export const SubCategoryPanel = styled.div`
-  background: #f8f7f2;
-  border-top: 1px solid #e8e8e0;
+  background: rgba(255,255,255,0.03);
+  border-top: 1px solid ${colors.border};
   padding: 12px 16px 16px 48px;
 `;
 
@@ -97,15 +105,16 @@ export const SubCategoryArea = styled.div`
 `;
 
 export const SubCategoryTag = styled.span`
-  background-color: white;
-  border: 1px solid #d0cfc5;
-  border-radius: 20px;
+  background-color: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
   padding: 4px 10px;
   font-size: 0.8rem;
   display: inline-flex;
   align-items: center;
   gap: 6px;
   color: ${colors.ecriture};
+  font-family: 'Space Grotesk', sans-serif;
 `;
 
 export const SubCategoryInline = styled.div`
@@ -116,33 +125,35 @@ export const SubCategoryInline = styled.div`
 
 export const FormField = styled.input`
   padding: 9px 12px;
-  border: 1.5px solid #d0cfc5;
+  border: 1px solid rgba(255,255,255,0.1);
   border-radius: 8px;
   font-size: 0.9rem;
-  background: white;
+  background: transparent;
   color: ${colors.ecriture};
+  font-family: 'Space Grotesk', sans-serif;
   outline: none;
   transition: border-color 0.15s ease;
   &:focus {
-    border-color: ${colors.secondary};
+    border-color: ${colors.accent};
   }
   &::placeholder {
-    color: #bbb;
+    color: rgba(255,255,255,0.25);
   }
 `;
 
 export const FormSelect = styled.select`
   padding: 9px 12px;
-  border: 1.5px solid #d0cfc5;
+  border: 1px solid rgba(255,255,255,0.1);
   border-radius: 8px;
   font-size: 0.9rem;
-  background: white;
+  background: ${colors.surface};
   color: ${colors.ecriture};
+  font-family: 'Space Grotesk', sans-serif;
   outline: none;
   cursor: pointer;
   transition: border-color 0.15s ease;
   &:focus {
-    border-color: ${colors.secondary};
+    border-color: ${colors.accent};
   }
 `;
 
@@ -151,10 +162,9 @@ export const AddCategoryForm = styled.form`
   gap: 12px;
   margin-top: 16px;
   padding: 20px;
-  background: white;
-  border: 1.5px solid ${colors.secondary};
+  background: ${colors.surface};
+  border: 1px solid ${colors.accent};
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 `;
 
 export const FormLabel = styled.label`
@@ -162,9 +172,10 @@ export const FormLabel = styled.label`
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: ${colors.secondary};
+  color: ${colors.accent};
   margin-bottom: 2px;
   display: block;
+  font-family: 'Space Grotesk', sans-serif;
 `;
 
 export const FormGroup = styled.div`
@@ -174,17 +185,18 @@ export const FormGroup = styled.div`
 `;
 
 export const SubmitButton = styled.button`
-  background-color: ${colors.secondary};
-  color: white;
+  background-color: ${colors.wine};
+  color: ${colors.main};
   border: none;
   padding: 11px 18px;
   border-radius: 8px;
   cursor: pointer;
   font-size: 0.9rem;
   font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
   transition: filter 0.15s ease;
   &:hover {
-    filter: brightness(1.1);
+    filter: brightness(1.15);
   }
 `;
 
@@ -194,16 +206,19 @@ export const AddButton = styled.button`
   gap: 8px;
   margin-top: 16px;
   background: transparent;
-  border: 2px dashed rgba(255, 255, 255, 0.5);
+  border: 1px dashed rgba(255, 255, 255, 0.2);
   border-radius: 12px;
   padding: 14px 20px;
   width: 70%;
-  color: white;
+  color: rgba(255,255,255,0.5);
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.15s ease;
+  font-family: 'Space Grotesk', sans-serif;
+  transition: all 0.15s ease;
   &:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    border-color: ${colors.accent};
+    color: ${colors.accent};
   }
 `;

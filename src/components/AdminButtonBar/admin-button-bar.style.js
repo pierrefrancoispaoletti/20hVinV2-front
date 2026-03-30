@@ -15,12 +15,16 @@ export const AdminButtonContainer = styled.div`
 `;
 
 export const AdminButton = styled.button`
-  border: none;
+  border: 1px solid rgba(255,255,255,0.1);
   outline: none;
-  border-radius: 50px;
-  padding: 12px;
-  background: ${colors.main};
+  border-radius: 8px;
+  padding: 10px 14px;
+  background: transparent;
+  color: ${colors.ecriture};
+  cursor: pointer;
+  transition: all 0.2s ease;
   :active {
-    background: black;
+    background: ${colors.wine};
+    border-color: ${colors.wine};
   }
 `;

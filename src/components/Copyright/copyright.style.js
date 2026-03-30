@@ -5,6 +5,7 @@ export const CopyrightStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 20px;
 
   .footer__copyright {
     display: flex;
@@ -12,24 +13,27 @@ export const CopyrightStyled = styled.div`
     align-items: center;
     margin: auto;
     padding: 10px;
-    font-family: "Lora", sans-serif !important;
-    font-size: 1.3em;
-    color: ${colors.ecriture}!important;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.2) !important;
+    letter-spacing: 1px;
   }
 
   .footer__alvp {
     border-radius: 8px;
     padding: 2px 5px;
-    font-family: "Lora", sans-serif !important;
-    color: ${colors.ecriture}!important;
+    font-family: 'Space Grotesk', sans-serif;
+    color: rgba(255,255,255,0.15) !important;
+    font-size: 0.65rem;
   }
 
   h3 {
-    font-family: "Lora", cursive !important;
+    font-family: 'Libre Baskerville', serif;
     text-align: center !important;
-    letter-spacing: 0.2em;
-    font-size: 1.8em !important;
+    letter-spacing: 0.1em;
+    font-size: 1.2em !important;
     color: ${colors.ecriture} !important;
+    font-weight: 400;
   }
 
   .alvp__icon {
@@ -37,7 +41,8 @@ export const CopyrightStyled = styled.div`
   }
 
   .link {
-    color: ${colors.ecriture};
+    color: rgba(255,255,255,0.2);
+    text-decoration: none;
   }
 
   @keyframes heartPulse {
