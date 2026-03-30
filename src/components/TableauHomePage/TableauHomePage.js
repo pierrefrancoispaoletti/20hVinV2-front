@@ -6,20 +6,23 @@ import {
   TableauLegend,
 } from "./tableau-homepage.style";
 import { useLocation } from "react-router-dom";
-import { categories } from "../../data/categories/categories";
+import { useSelector } from "react-redux";
+import { selectCategories } from "../../redux/reducers/Categories/selectors";
+import { getCategoryLink } from "../../data/categories/categoryAssets";
 import AddProductButton from "../AddProductButton/AddProductButton";
 import ProductModal from "../ProductModal/ProductModal";
-import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../redux/reducers/User/selector";
 import SubCategorySelector from "../SubCategorySelector/SubCategorySelector";
 import { categoriesStyle2 } from "../../_const";
 
 const TableauHomePage = ({ setFilter, children, filter }) => {
   const location = useLocation();
-  let findCategory = categories.find(
-    (category) => category.link === location.pathname
-  );
+  const allCategories = useSelector(selectCategories);
   const user = useSelector(selectCurrentUser);
+
+  const findCategory = allCategories.find(
+    (cat) => getCategoryLink(cat.slug) === location.pathname,
+  );
 
   let prevlocationValueRef = useRef(null);
   useEffect(() => {
@@ -44,7 +47,7 @@ const TableauHomePage = ({ setFilter, children, filter }) => {
           />
         )} */}
         <TableauLegend>{findCategory?.legend}</TableauLegend>
-        {findCategory?.subCategory && (
+        {findCategory?.subCategory?.length > 0 && (
           <SubCategorySelector
             filter={filter}
             findCategory={findCategory}

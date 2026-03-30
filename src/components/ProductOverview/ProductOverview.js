@@ -1,5 +1,4 @@
 import React from "react";
-import { findSubCategoryName } from "../../redux/reducers/Products/utils";
 import LoaderElement from "../Loader/LoaderElement";
 import ProductElement from "../ProductElement/ProductElement";
 import TableauHomePage from "../TableauHomePage/TableauHomePage";

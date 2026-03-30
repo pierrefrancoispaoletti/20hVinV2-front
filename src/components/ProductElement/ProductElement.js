@@ -5,6 +5,7 @@ import { selectCurrentUser } from "../../redux/reducers/User/selector";
 import { useSelector } from "react-redux";
 import WineElement from "../WineElement/WineElement";
 import TranslatorComponent from "../TranslatorComponent/TranslatorComponent";
+import { getCurrentTimeSlotFrance } from "../../_const";
 
 const ProductElement = ({ product, index, length }) => {
   const {
@@ -17,6 +18,7 @@ const ProductElement = ({ product, index, length }) => {
     couleur,
     date,
     heure,
+    show,
   } = product;
   const user = useSelector(selectCurrentUser);
 
@@ -42,9 +44,33 @@ const ProductElement = ({ product, index, length }) => {
         <AdminButtonBar _id={_id} product={product} />
       )}
       <h3 className="title">
-        <span style={{ display: "inline-block" }}>{`${
-          visible ? "" : "CACHÉ : "
-        } ${title}`}</span>
+        <span style={{ display: "inline-block" }}>
+          {`${visible ? "" : "CACHÉ : "} ${title}`}
+          {user?.role === "isAdmin" && show && show !== "always" && (() => {
+            const currentSlot = getCurrentTimeSlotFrance();
+            const isActive = show === currentSlot;
+            const label = show === "midi" ? "MIDI" : "SOIR";
+            const color = show === "midi" ? "#4caf50" : "#ff9800";
+            return (
+              <span
+                style={{
+                  display: "inline-block",
+                  fontSize: "0.55rem",
+                  fontWeight: "bold",
+                  padding: "2px 6px",
+                  borderRadius: "4px",
+                  marginLeft: "8px",
+                  verticalAlign: "middle",
+                  letterSpacing: "1px",
+                  backgroundColor: isActive ? color : "#888",
+                  color: "white",
+                }}
+              >
+                {isActive ? label : `⏱ ${label}`}
+              </span>
+            );
+          })()}
+        </span>
         {category === "evenements" ? (
           <span className="price">
             {date ? `Le ${new Date(date).toLocaleDateString()}` : ""}

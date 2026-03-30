@@ -1,5 +1,9 @@
 import React from "react";
-import { categories } from "../../data/categories/categories";
+import { useSelector } from "react-redux";
+import { selectCategories } from "../../redux/reducers/Categories/selectors";
+import { selectCurrentUser } from "../../redux/reducers/User/selector";
+import { getCurrentTimeSlotFrance } from "../../_const";
+import categoryAssets, { getCategoryLink } from "../../data/categories/categoryAssets";
 import {
   CategoriesContainer,
   CategoryItem,
@@ -10,28 +14,44 @@ import {
 } from "./category-selector.style";
 
 const CategorySelector = () => {
+  const user = useSelector(selectCurrentUser);
+  const allCategories = useSelector(selectCategories);
+  const currentSlot = getCurrentTimeSlotFrance();
+
+  const visibleCategories =
+    user?.role === "isAdmin"
+      ? allCategories
+      : allCategories.filter((cat) => {
+          const avail = cat.availableAt ?? "always";
+          return cat.isVisible && (avail === "always" || avail === currentSlot);
+        });
+
   return (
     <CategoriesContainer>
       <ListContainer>
-        {categories.map((category) => (
-          <LinkContainer to={category.link} key={category.name}>
-            <CategoryItem>
-              <IconWrapper>
-                {category?.logo ? (
-                  <img
-                    style={category.style}
-                    width={category?.widthCategorySelector}
-                    src={category?.logoAlt ? category?.logoAlt : category?.logo}
-                    alt={category.alt}
-                  />
-                ) : (
-                  category.icon
-                )}
-              </IconWrapper>
-              <CategoryTitle>{category.name}</CategoryTitle>
-            </CategoryItem>
-          </LinkContainer>
-        ))}
+        {visibleCategories.map((category) => {
+          const assets = categoryAssets[category.slug];
+          const link = getCategoryLink(category.slug);
+          return (
+            <LinkContainer to={link} key={category._id || category.slug}>
+              <CategoryItem>
+                <IconWrapper>
+                  {assets?.logo ? (
+                    <img
+                      style={assets.style}
+                      width={assets.widthCategorySelector}
+                      src={assets.logo}
+                      alt={category.name}
+                    />
+                  ) : assets?.icon ? (
+                    assets.icon
+                  ) : null}
+                </IconWrapper>
+                <CategoryTitle>{category.name}</CategoryTitle>
+              </CategoryItem>
+            </LinkContainer>
+          );
+        })}
       </ListContainer>
     </CategoriesContainer>
   );

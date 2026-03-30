@@ -11,29 +11,34 @@ export const categories = [
     title: "Événements",
     link: "/products/evenements",
     slug: "evenements",
+    availableAt: "always",
   },
   {
     name: "Suggestions",
     link: "/",
     slug: "suggestions",
+    availableAt: "always",
   },
   {
     name: "Créations",
     title: "Nos créations",
     link: "/products/creations",
     slug: "creations",
+    availableAt: "always",
   },
   {
     name: "Côté Apéro",
     legend: "( à partager... ou pas ... )",
     link: "/products/apero",
     slug: "apero",
+    availableAt: "midi",
   },
   {
     name: "Menus",
     title: "Nos menus",
     link: "/products/menus",
     slug: "menus",
+    availableAt: "soir",
     subCategory: [
       { name: "Menu enfant", slug: "enfant" },
       { name: "Menus Corse", slug: "corse" },
@@ -44,18 +49,21 @@ export const categories = [
     title: "Entrées",
     link: "/products/entrees",
     slug: "entrees",
+    availableAt: "always",
   },
   {
     name: "Pâtes",
     title: "Pâtes",
     link: "/products/pates",
     slug: "pates",
+    availableAt: "always",
   },
   {
     name: "Nos Gnocchi",
     title: "Gnocchi",
     link: "/products/gnocchi",
     slug: "gnocchi",
+    availableAt: "always",
   },
   // {
   //   name: "Nos Risotto",
@@ -68,6 +76,7 @@ export const categories = [
     title: "Pizza",
     link: "/products/pizza",
     slug: "pizza",
+    availableAt: "always",
   },
   // {
   //   name: "Nos Poissons",
@@ -86,6 +95,7 @@ export const categories = [
     title: "Les douceurs",
     link: "/products/douceurs",
     slug: "douceurs",
+    availableAt: "always",
     subCategory: [
       { name: "Pizzas sucrées", slug: "pizzas-sucrees" },
       { name: "Desserts", slug: "desserts" },
@@ -95,11 +105,13 @@ export const categories = [
     name: "Softs et boissons chaudes",
     link: "/products/softs",
     slug: "softs",
+    availableAt: "always",
   },
   {
     name: "Cocktails",
     link: "/products/cocktails",
     slug: "cocktails",
+    availableAt: "soir",
     subCategory: [
       { name: "Cocktails", slug: "cocktails-a" },
       { name: "Sans-alcool", slug: "cocktails-b" },
@@ -109,6 +121,7 @@ export const categories = [
     name: "Alcools",
     link: "/products/alcools",
     slug: "alcools",
+    availableAt: "always",
     subCategory: [
       { name: "Apéritifs", slug: "aperitifs" },
       { name: "Bières", slug: "bieres" },
@@ -119,6 +132,7 @@ export const categories = [
     name: "La Cave",
     link: "/products/cave",
     slug: "cave",
+    availableAt: "always",
     subCategory: [
       { name: "Vins Corse", slug: "vins-corse" },
       { name: "Vins Français", slug: "vins-fr" },
@@ -148,5 +162,6 @@ export const categories = [
     title: "Événements",
     link: "/products/evenements",
     slug: "evenements",
+    availableAt: "always",
   },
 ];

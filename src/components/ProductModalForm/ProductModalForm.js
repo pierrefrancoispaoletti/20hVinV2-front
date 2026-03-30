@@ -25,6 +25,7 @@ const ProductModalForm = ({
     category,
     location,
     visible,
+    show,
     couleur,
     subCategory,
     date,
@@ -47,6 +48,7 @@ const ProductModalForm = ({
       category,
       location,
       visible,
+      show,
       couleur,
       subCategory,
       date,
@@ -74,6 +76,26 @@ const ProductModalForm = ({
         handleChange={handleChange}
         required
       />
+      <div style={{ margin: "12px 0" }}>
+        <label htmlFor="show">Disponibilité horaire</label>
+        <select
+          id="show"
+          name="show"
+          value={show ?? "always"}
+          onChange={handleChange}
+          style={{
+            fontSize: "1rem",
+            padding: "6px 10px",
+            width: "100%",
+            display: "block",
+            marginTop: "4px",
+          }}
+        >
+          <option value="always">Toujours disponible</option>
+          <option value="midi">Midi uniquement (02h01 – 15h00)</option>
+          <option value="soir">Soir uniquement (15h00 – 02h00)</option>
+        </select>
+      </div>
       <label htmlFor="description">Description</label>
       <textarea
         className="textarea-description"

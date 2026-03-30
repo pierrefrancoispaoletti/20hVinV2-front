@@ -16,7 +16,7 @@ export const LocalMessageContainer = styled.div`
   align-items: center;
   justify-content: center;
   position: fixed;
-  bottom: 15px;
+  top: 15px;
   right: 0;
   left: 0;
   width: 100%;

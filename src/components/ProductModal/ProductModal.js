@@ -19,7 +19,7 @@ import {
   AddProductTitle,
   CloseIconButton,
 } from "./product-modal.style";
-import { categories } from "../../data/categories/categories";
+import { selectCategoryBySlug } from "../../redux/reducers/Categories/selectors";
 import SubCategoryPartProductModal from "../SubCategoryPartProductModal/SubCategoryPart.ProductModal";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
@@ -36,6 +36,7 @@ const ProductModal = ({ currentCategory }) => {
     location: placeLocation,
     category: "",
     visible: true,
+    show: "always",
     couleur: [
       { value: "rouge", isChecked: false, price: "" },
       { value: "blanc", isChecked: false, price: "" },
@@ -63,9 +64,7 @@ const ProductModal = ({ currentCategory }) => {
     }
   }, [currentCategory, productToEdit, type, open]);
 
-  const currentCategoryObject = categories.find(
-    (category) => category.slug === currentCategory
-  );
+  const currentCategoryObject = useSelector(selectCategoryBySlug(currentCategory));
 
   return (
     <AddProductModalContainer open={open} className="modal">
@@ -91,7 +90,7 @@ const ProductModal = ({ currentCategory }) => {
             setProduct={setProduct}
           />
         )}
-        {currentCategoryObject.subCategory && (
+        {currentCategoryObject?.subCategory?.length > 0 && (
           <SubCategoryPartProductModal
             subCategories={currentCategoryObject.subCategory}
             setProduct={setProduct}

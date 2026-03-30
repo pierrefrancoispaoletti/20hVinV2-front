@@ -1,5 +1,3 @@
-import { categories } from "../../../data/categories/categories";
-
 export const filteredProductsList = (actionType, state, payload) => {
   switch (actionType) {
     case "ADD_PRODUCT":
@@ -19,7 +17,7 @@ export const filteredProductsList = (actionType, state, payload) => {
   }
 };
 
-export const findSubCategoryName = (product) => {
+export const findSubCategoryName = (product, categories = []) => {
   let scSlug;
   let scLegend;
   let categoryName = categories

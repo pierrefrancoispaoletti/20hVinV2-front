@@ -1,68 +1,13 @@
-import { faFacebook, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
-
-import "./copyright.style.js";
-import {
-  faEnvelope,
-  faHeart,
-  faPhone,
-} from "@fortawesome/free-solid-svg-icons";
-import { facebook, instagram, mail, phoneNumber, url } from "../../_const";
+import { url } from "../../_const";
 import { CopyrightStyled } from "./copyright.style.js";
+
 const Copyright = () => {
   return (
     <CopyrightStyled>
-      <div>
-        <h3>Retrouvez nous sur : </h3>
-      </div>
-      <div className="footer__icons">
-        <a target="_blank" href={facebook} rel="noreferrer">
-          <FontAwesomeIcon
-            style={{
-              color: "black",
-              background: "transparent",
-              borderRadius: "100%",
-            }}
-            size="3x"
-            icon={faFacebook}
-            pull="left"
-          />
-        </a>
-        <a target="_blank" href={instagram} rel="noreferrer">
-          <FontAwesomeIcon
-            style={{ color: "black", borderRadius: "100%" }}
-            size="3x"
-            icon={faInstagram}
-            pull="right"
-          />
-        </a>
-      </div>
-      <div>
-        <h3>Contactez nous ! </h3>
-      </div>
-      <div className="footer__icons">
-        <a href={`mailto:${mail}`}>
-          <FontAwesomeIcon
-            style={{
-              color: "black",
-            }}
-            size="3x"
-            icon={faEnvelope}
-            pull="left"
-          />
-        </a>
-        <a href={`tel:${phoneNumber}`}>
-          <FontAwesomeIcon
-            style={{
-              color: "black",
-            }}
-            size="3x"
-            icon={faPhone}
-          />
-        </a>
-      </div>
-      <div className="footer__copyright" style={{ color: "white" }}>
+      <div className="footer__copyright">
         {"Copyright © "}
         <a className="link" href={url}>
           <span>20hVin&nbsp;</span>

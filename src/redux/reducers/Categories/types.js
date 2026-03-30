@@ -1,0 +1,9 @@
+const CategoriesActionTypes = {
+  GET_CATEGORIES:     "GET_CATEGORIES",
+  ADD_CATEGORY:       "ADD_CATEGORY",
+  UPDATE_CATEGORY:    "UPDATE_CATEGORY",
+  DELETE_CATEGORY:    "DELETE_CATEGORY",
+  REORDER_CATEGORIES: "REORDER_CATEGORIES",
+};
+
+export default CategoriesActionTypes;
