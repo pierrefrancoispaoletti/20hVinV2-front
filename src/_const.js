@@ -1,8 +1,10 @@
 export const placeLocation = "20hvin";
-export const serverURI =
-  process.env.NODE_ENV === "production"
-    ? "https://20h20-api.herokuapp.com"
-    : "http://localhost:8080";
+// export const serverURI =
+//   process.env.NODE_ENV === "production"
+//     ? "https://20h20-api.herokuapp.com"
+//     : "http://localhost:8080";
+
+export const serverURI = "http://localhost:8080";
 
 export const colors = {
   main: "#e8e3dc", // texte clair principal

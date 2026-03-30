@@ -5,12 +5,13 @@ import { persistReducer } from "redux-persist";
 import { productReducer } from "./Products/reducer";
 import { categoryReducer } from "./Categories/reducer";
 import { configReducer } from "./Config/reducer";
+import { pushReducer } from "./Push/reducer";
 import { placeLocation } from "../../_const";
 
 const persistConfig = {
   key: placeLocation,
   storage,
-  whitelist: ["user", "products", "categories", "appConfig"],
+  whitelist: ["user", "products", "categories", "appConfig", "push"],
 };
 
 const reducers = combineReducers({
@@ -18,6 +19,7 @@ const reducers = combineReducers({
   products: productReducer,
   categories: categoryReducer,
   appConfig: configReducer,
+  push: pushReducer,
 });
 
 export default persistReducer(persistConfig, reducers);

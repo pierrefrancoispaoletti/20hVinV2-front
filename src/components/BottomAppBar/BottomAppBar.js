@@ -9,6 +9,7 @@ import {
   faEnvelope,
   faPhone,
   faSlidersH,
+  faBell,
 } from "@fortawesome/free-solid-svg-icons";
 import { selectCurrentUser } from "../../redux/reducers/User/selector";
 import { setUserMessage, userSignOut } from "../../redux/reducers/User/actions";
@@ -57,6 +58,9 @@ const BottomAppBar = () => {
             </BarButton>
             <BarButton to="/admin/config">
               <FontAwesomeIcon icon={faSlidersH} size="lg" />
+            </BarButton>
+            <BarButton to="/admin/notifications">
+              <FontAwesomeIcon icon={faBell} size="lg" />
             </BarButton>
           </>
         )}

@@ -69,4 +69,36 @@ self.addEventListener('message', (event) => {
   }
 });
 
-// Any other custom service worker logic can go here.
+// --- Push Notifications ---
+
+self.addEventListener('push', (event) => {
+  let data = { title: '20hVin', body: '', url: '/' };
+  try {
+    data = { ...data, ...event.data.json() };
+  } catch (e) {
+    data.body = event.data?.text() || '';
+  }
+  event.waitUntil(
+    self.registration.showNotification(data.title, {
+      body: data.body,
+      icon: '/logo192.png',
+      badge: '/logo192.png',
+      data: { url: data.url },
+    })
+  );
+});
+
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  const url = event.notification.data?.url || '/';
+  event.waitUntil(
+    self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((clients) => {
+      const existing = clients.find((c) => c.visibilityState === 'visible');
+      if (existing) {
+        existing.navigate(url);
+        return existing.focus();
+      }
+      return self.clients.openWindow(url);
+    })
+  );
+});

@@ -4,6 +4,8 @@ import { Navigate, Route, Routes } from "react-router";
 import { selectCurrentUser } from "../../redux/reducers/User/selector";
 import { getCategories } from "../../redux/reducers/Categories/querries";
 import { getConfig } from "../../redux/reducers/Config/querries";
+import { checkExistingSubscription } from "../../redux/reducers/Push/querries";
+import NotificationPrompt from "../NotificationPrompt/NotificationPrompt";
 import CategorySelector from "../CategorySelector/CategorySelector";
 import Header from "../Header/Header";
 import Loader from "../Loader/Loader";
@@ -21,6 +23,9 @@ const CategoryAdmin = lazy(() =>
 const SocialAdmin = lazy(() =>
   import("../SocialAdmin/SocialAdmin")
 );
+const PushAdmin = lazy(() =>
+  import("../PushAdmin/PushAdmin")
+);
 
 const App = () => {
   const user = useSelector(selectCurrentUser);
@@ -30,6 +35,7 @@ const App = () => {
   useEffect(() => {
     getCategories(dispatch);
     getConfig(dispatch);
+    checkExistingSubscription(dispatch);
   }, [dispatch]);
 
   return (
@@ -88,9 +94,20 @@ const App = () => {
               )
             }
           />
+          <Route
+            path="admin/notifications"
+            element={
+              user?.role === "isAdmin" ? (
+                <PushAdmin />
+              ) : (
+                <Navigate replace to="/" />
+              )
+            }
+          />
         </Routes>
       </Suspense>
       <Copyright />
+      <NotificationPrompt />
       <BottomAppBar />
     </div>
   );
