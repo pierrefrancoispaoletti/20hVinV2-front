@@ -43,6 +43,32 @@ export const BarButton = styled(Link)`
   }
 `;
 
+export const BarAction = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid ${colors.accent}44;
+  background: transparent;
+  color: ${colors.accent};
+  cursor: pointer;
+  transition: all 0.2s ease;
+  &:hover {
+    border-color: ${colors.accent};
+    color: ${colors.accent};
+    background: ${colors.accent}11;
+  }
+  &:active {
+    background: ${colors.accent}22;
+  }
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+`;
+
 export const BarAnchor = styled.a`
   display: flex;
   align-items: center;

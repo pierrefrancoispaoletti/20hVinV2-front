@@ -1,4 +1,5 @@
 import PushActionTypes from "./types";
+import { REHYDRATE } from "redux-persist";
 
 const INITIAL_STATE = {
   permission: "default",
@@ -17,6 +18,17 @@ export const pushReducer = (state = INITIAL_STATE, action) => {
       return { ...state, loading: action.payload };
     case PushActionTypes.SET_PUSH_PROMPT_DISMISSED:
       return { ...state, promptDismissed: action.payload };
+    case REHYDRATE: {
+      const incoming = action.payload?.push;
+      if (!incoming) return state;
+      return {
+        ...state,
+        permission: incoming.permission ?? state.permission,
+        subscription: incoming.subscription ?? state.subscription,
+        loading: false,
+        promptDismissed: false,
+      };
+    }
     default:
       return state;
   }

@@ -17,6 +17,7 @@ import {
 export const checkExistingSubscription = async (dispatch) => {
   if (!isPushSupported()) return;
   try {
+    dispatch(setPushLoading(false));
     dispatch(setPushPermission(getNotificationPermission()));
     const subscription = await getExistingSubscription();
     dispatch(setPushSubscription(subscription ? subscription.toJSON() : null));

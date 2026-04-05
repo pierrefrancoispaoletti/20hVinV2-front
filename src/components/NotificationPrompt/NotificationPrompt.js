@@ -33,7 +33,7 @@ const NotificationPrompt = () => {
     checkExistingSubscription(dispatch);
     const count = parseInt(localStorage.getItem(VISIT_KEY) || "0", 10) + 1;
     localStorage.setItem(VISIT_KEY, String(count));
-    if (count >= 2) setVisible(true);
+    if (count >= 1) setVisible(true);
   }, [dispatch]);
 
   const supported = isPushSupported();

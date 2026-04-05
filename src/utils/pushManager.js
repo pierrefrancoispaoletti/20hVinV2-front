@@ -19,8 +19,17 @@ function urlBase64ToUint8Array(base64String) {
   return outputArray;
 }
 
+function getRegistrationWithTimeout(ms = 5000) {
+  return Promise.race([
+    navigator.serviceWorker.ready,
+    new Promise((_, reject) =>
+      setTimeout(() => reject(new Error("Service worker non disponible")), ms)
+    ),
+  ]);
+}
+
 export async function subscribeToPush() {
-  const registration = await navigator.serviceWorker.ready;
+  const registration = await getRegistrationWithTimeout();
   const subscription = await registration.pushManager.subscribe({
     userVisibleOnly: true,
     applicationServerKey: urlBase64ToUint8Array(
@@ -31,7 +40,7 @@ export async function subscribeToPush() {
 }
 
 export async function getExistingSubscription() {
-  const registration = await navigator.serviceWorker.ready;
+  const registration = await getRegistrationWithTimeout();
   return registration.pushManager.getSubscription();
 }
 
