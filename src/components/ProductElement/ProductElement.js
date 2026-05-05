@@ -5,6 +5,7 @@ import { selectCurrentUser } from "../../redux/reducers/User/selector";
 import { useSelector } from "react-redux";
 import WineElement from "../WineElement/WineElement";
 import TranslatorComponent from "../TranslatorComponent/TranslatorComponent";
+import ImageElement from "../ImageElement/ImageElement";
 import { getCurrentTimeSlotFrance } from "../../_const";
 
 const getWineBarColor = (value) => {
@@ -16,7 +17,7 @@ const getWineBarColor = (value) => {
   }
 };
 
-const ProductElement = ({ product, index, length }) => {
+const ProductElement = ({ product, index, length, onOpen }) => {
   const {
     _id,
     price,
@@ -28,6 +29,7 @@ const ProductElement = ({ product, index, length }) => {
     date,
     heure,
     show,
+    image,
   } = product;
   const user = useSelector(selectCurrentUser);
 
@@ -44,21 +46,31 @@ const ProductElement = ({ product, index, length }) => {
     return "";
   };
 
-  // Determine wine colors for the left bar (cave category only)
   const isCave = category === "cave";
   const checkedColors = isCave
     ? couleur.filter((c) => c.isChecked && c.value !== "au verre")
     : [];
   const hasWineBar = checkedColors.length > 0;
+  const canOpenSheet = !isCave && typeof onOpen === "function";
+
+  const handleClick = (e) => {
+    if (e.target.closest("[data-admin-bar]")) return;
+    if (canOpenSheet) onOpen(product);
+  };
 
   return (
     <TableauContent
       visible={user?.role === "isAdmin" || visible}
       category={category}
       last={index === length - 1}
-      style={hasWineBar ? { paddingLeft: 0, flexDirection: "row", alignItems: "stretch" } : undefined}
+      onClick={canOpenSheet ? handleClick : undefined}
+      style={{
+        ...(hasWineBar
+          ? { paddingLeft: 0, flexDirection: "row", alignItems: "stretch" }
+          : {}),
+        cursor: canOpenSheet ? "pointer" : "default",
+      }}
     >
-      {/* Wine color bar on the left */}
       {hasWineBar && (
         <div
           style={{
@@ -86,58 +98,76 @@ const ProductElement = ({ product, index, length }) => {
         </div>
       )}
 
-      {/* Product content */}
-      <div style={hasWineBar ? { flex: 1, padding: "0" } : undefined}>
-        {user && user.role === "isAdmin" && (
-          <AdminButtonBar _id={_id} product={product} />
+      <div
+        style={
+          hasWineBar
+            ? { flex: 1, padding: "0", display: "flex", gap: 12, alignItems: "center" }
+            : { display: "flex", gap: 12, alignItems: "center" }
+        }
+      >
+        {image?.url && !isCave && (
+          <ImageElement
+            image={image.url}
+            width={56}
+            height={56}
+            alt={title}
+            style={{ borderRadius: 8, objectFit: "cover", flexShrink: 0 }}
+          />
         )}
-        <h3 className="title">
-          <span style={{ display: "inline-block" }}>
-            {`${visible ? "" : "CACHÉ : "} ${title}`}
-            {user?.role === "isAdmin" && show && show !== "always" && (() => {
-              const currentSlot = getCurrentTimeSlotFrance();
-              const isActive = show === currentSlot;
-              const label = show === "midi" ? "MIDI" : "SOIR";
-              const color = show === "midi" ? "#4caf50" : "#ff9800";
-              return (
-                <span
-                  style={{
-                    display: "inline-block",
-                    fontSize: "0.55rem",
-                    fontWeight: "bold",
-                    padding: "2px 6px",
-                    borderRadius: "4px",
-                    marginLeft: "8px",
-                    verticalAlign: "middle",
-                    letterSpacing: "1px",
-                    backgroundColor: isActive ? color : "#888",
-                    color: "white",
-                  }}
-                >
-                  {isActive ? label : `⏱ ${label}`}
-                </span>
-              );
-            })()}
-          </span>
-          {category === "evenements" ? (
-            <span className="price">
-              {date ? `Le ${new Date(date).toLocaleDateString()}` : ""}
-              {heure ? ` à ${heure}` : ""}
+        <div style={{ flex: 1, minWidth: 0 }}>
+          {user && user.role === "isAdmin" && (
+            <div data-admin-bar>
+              <AdminButtonBar _id={_id} product={product} />
+            </div>
+          )}
+          <h3 className="title">
+            <span style={{ display: "inline-block" }}>
+              {`${visible ? "" : "CACHÉ : "} ${title}`}
+              {user?.role === "isAdmin" && show && show !== "always" && (() => {
+                const currentSlot = getCurrentTimeSlotFrance();
+                const isActive = show === currentSlot;
+                const label = show === "midi" ? "MIDI" : "SOIR";
+                const color = show === "midi" ? "#4caf50" : "#ff9800";
+                return (
+                  <span
+                    style={{
+                      display: "inline-block",
+                      fontSize: "0.55rem",
+                      fontWeight: "bold",
+                      padding: "2px 6px",
+                      borderRadius: "4px",
+                      marginLeft: "8px",
+                      verticalAlign: "middle",
+                      letterSpacing: "1px",
+                      backgroundColor: isActive ? color : "#888",
+                      color: "white",
+                    }}
+                  >
+                    {isActive ? label : `⏱ ${label}`}
+                  </span>
+                );
+              })()}
             </span>
-          ) : category !== "cave" ||
-            couleur.every((color) => !color.isChecked) ? (
-            <span className="price">{price?.toFixed(2)} €</span>
-          ) : (
-            <WineElement couleur={couleur} wineContent={wineContent} />
-          )}
-        </h3>
-        <p className="description">
-          {description?.length > 0 && (
-            <TranslatorComponent>
-              {description?.replace("\n", " ")}
-            </TranslatorComponent>
-          )}
-        </p>
+            {category === "evenements" ? (
+              <span className="price">
+                {date ? `Le ${new Date(date).toLocaleDateString()}` : ""}
+                {heure ? ` à ${heure}` : ""}
+              </span>
+            ) : category !== "cave" ||
+              couleur.every((color) => !color.isChecked) ? (
+              <span className="price">{price?.toFixed(2)} €</span>
+            ) : (
+              <WineElement couleur={couleur} wineContent={wineContent} />
+            )}
+          </h3>
+          <p className="description">
+            {description?.length > 0 && (
+              <TranslatorComponent>
+                {description?.replace("\n", " ")}
+              </TranslatorComponent>
+            )}
+          </p>
+        </div>
       </div>
     </TableauContent>
   );
