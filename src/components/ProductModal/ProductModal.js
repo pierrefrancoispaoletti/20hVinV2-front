@@ -44,6 +44,7 @@ const ProductModal = ({ currentCategory }) => {
       { value: "au verre", isChecked: false, price: "" },
     ],
     subCategory: "",
+    image: null,
   };
 
   const [product, setProduct] = useState(initialState);

@@ -7,6 +7,7 @@ import {
 import { selectCurrentUser } from "../../redux/reducers/User/selector";
 import FormInput from "../FormInput/FormInput";
 import { AddProductButtonStyled } from "../ProductModal/product-modal.style";
+import ImageUploadField from "./ImageUploadField";
 
 const ProductModalForm = ({
   children,
@@ -30,6 +31,7 @@ const ProductModalForm = ({
     subCategory,
     date,
     heure,
+    image,
   } = product;
 
   const clearState = () => setProduct({ ...initialState });
@@ -53,6 +55,7 @@ const ProductModalForm = ({
       subCategory,
       date,
       heure,
+      image,
     };
     if (type === "ajouter") {
       addProduct(newProduct, dispatch, token).then(() => clearState());
@@ -137,6 +140,15 @@ const ProductModalForm = ({
           label="Prix"
           value={price}
           required
+        />
+      )}
+      {category && category !== "cave" && (
+        <ImageUploadField
+          image={image}
+          token={token}
+          onChange={(value) =>
+            setProduct((prev) => ({ ...prev, image: value }))
+          }
         />
       )}
       {children}
