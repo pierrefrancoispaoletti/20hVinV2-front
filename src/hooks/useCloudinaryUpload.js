@@ -4,7 +4,7 @@ import { serverURI } from "../_const";
 
 const ACCEPTED = ["image/jpeg", "image/png", "image/webp"];
 const MAX_BYTES = 15 * 1024 * 1024; // 15 Mo (avant compression)
-const MAX_DIM = 1600;
+const MAX_DIM = 1200;
 const JPEG_QUALITY = 0.85;
 
 const loadBitmap = async (file) => {

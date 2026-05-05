@@ -11,7 +11,7 @@ const Lightbox = ({ image, alt, onClose }) => {
   }, [onClose]);
 
   if (!image) return null;
-  const fullSrc = image.replace("/upload/", "/upload/c_limit,w_1600,f_auto,q_auto/");
+  const fullSrc = image.replace("/upload/", "/upload/c_limit,w_1200,f_auto,q_auto:eco/");
 
   return (
     <Overlay onClick={onClose}>

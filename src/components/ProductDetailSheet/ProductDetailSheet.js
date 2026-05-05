@@ -33,7 +33,7 @@ const ProductDetailSheet = ({ product, open, onClose }) => {
   const { title, description, price, image, category, date, heure } = product;
   const isEvent = category === "evenements";
   const heroSrc = image?.url
-    ? image.url.replace("/upload/", "/upload/c_fill,g_auto,w_800,f_auto,q_auto/")
+    ? image.url.replace("/upload/", "/upload/c_fill,g_auto,w_800,f_auto,q_auto:eco/")
     : null;
 
   return (
