@@ -60,13 +60,14 @@ const ProductElement = ({ product, index, length, onOpen }) => {
     if (canOpenSheet) onOpen(product);
   };
 
+  const adminBar = isAdmin ? (
+    <div data-admin-bar>
+      <AdminButtonBar _id={_id} product={product} />
+    </div>
+  ) : null;
+
   const textBlock = (
     <>
-      {isAdmin && (
-        <div data-admin-bar>
-          <AdminButtonBar _id={_id} product={product} />
-        </div>
-      )}
       <h3 className="title">
         <span style={{ display: "inline-block" }}>
           {`${visible ? "" : "CACHÉ : "} ${title}`}
@@ -168,17 +169,25 @@ const ProductElement = ({ product, index, length, onOpen }) => {
       )}
 
       {hasWineBar ? (
-        <div style={{ flex: 1, padding: "0", display: "flex", gap: 12, alignItems: "center" }}>
-          {thumb}
-          <div style={{ flex: 1, minWidth: 0 }}>{textBlock}</div>
-        </div>
-      ) : hasThumb ? (
-        <div style={{ display: "flex", gap: 12, alignItems: "center", width: "100%" }}>
-          {thumb}
-          <div style={{ flex: 1, minWidth: 0 }}>{textBlock}</div>
+        <div style={{ flex: 1, padding: "0" }}>
+          {adminBar}
+          <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+            {thumb}
+            <div style={{ flex: 1, minWidth: 0 }}>{textBlock}</div>
+          </div>
         </div>
       ) : (
-        textBlock
+        <>
+          {adminBar}
+          {hasThumb ? (
+            <div style={{ display: "flex", gap: 12, alignItems: "center", width: "100%" }}>
+              {thumb}
+              <div style={{ flex: 1, minWidth: 0 }}>{textBlock}</div>
+            </div>
+          ) : (
+            textBlock
+          )}
+        </>
       )}
     </TableauContent>
   );
