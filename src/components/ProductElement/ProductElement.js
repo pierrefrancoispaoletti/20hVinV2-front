@@ -32,6 +32,7 @@ const ProductElement = ({ product, index, length, onOpen }) => {
     image,
   } = product;
   const user = useSelector(selectCurrentUser);
+  const isAdmin = user?.role === "isAdmin";
 
   const wineContent = (couleur) => {
     if (couleur) {
@@ -51,6 +52,7 @@ const ProductElement = ({ product, index, length, onOpen }) => {
     ? couleur.filter((c) => c.isChecked && c.value !== "au verre")
     : [];
   const hasWineBar = checkedColors.length > 0;
+  const hasThumb = !!image?.url && !isCave;
   const canOpenSheet = !isCave && typeof onOpen === "function";
 
   const handleClick = (e) => {
@@ -58,9 +60,76 @@ const ProductElement = ({ product, index, length, onOpen }) => {
     if (canOpenSheet) onOpen(product);
   };
 
+  const textBlock = (
+    <>
+      {isAdmin && (
+        <div data-admin-bar>
+          <AdminButtonBar _id={_id} product={product} />
+        </div>
+      )}
+      <h3 className="title">
+        <span style={{ display: "inline-block" }}>
+          {`${visible ? "" : "CACHÉ : "} ${title}`}
+          {isAdmin && show && show !== "always" && (() => {
+            const currentSlot = getCurrentTimeSlotFrance();
+            const isActive = show === currentSlot;
+            const label = show === "midi" ? "MIDI" : "SOIR";
+            const color = show === "midi" ? "#4caf50" : "#ff9800";
+            return (
+              <span
+                style={{
+                  display: "inline-block",
+                  fontSize: "0.55rem",
+                  fontWeight: "bold",
+                  padding: "2px 6px",
+                  borderRadius: "4px",
+                  marginLeft: "8px",
+                  verticalAlign: "middle",
+                  letterSpacing: "1px",
+                  backgroundColor: isActive ? color : "#888",
+                  color: "white",
+                }}
+              >
+                {isActive ? label : `⏱ ${label}`}
+              </span>
+            );
+          })()}
+        </span>
+        {category === "evenements" ? (
+          <span className="price">
+            {date ? `Le ${new Date(date).toLocaleDateString()}` : ""}
+            {heure ? ` à ${heure}` : ""}
+          </span>
+        ) : category !== "cave" ||
+          couleur.every((color) => !color.isChecked) ? (
+          <span className="price">{price?.toFixed(2)} €</span>
+        ) : (
+          <WineElement couleur={couleur} wineContent={wineContent} />
+        )}
+      </h3>
+      <p className="description">
+        {description?.length > 0 && (
+          <TranslatorComponent>
+            {description?.replace("\n", " ")}
+          </TranslatorComponent>
+        )}
+      </p>
+    </>
+  );
+
+  const thumb = hasThumb && (
+    <ImageElement
+      image={image.url}
+      width={56}
+      height={56}
+      alt={title}
+      style={{ borderRadius: 8, objectFit: "cover", flexShrink: 0 }}
+    />
+  );
+
   return (
     <TableauContent
-      visible={user?.role === "isAdmin" || visible}
+      visible={isAdmin || visible}
       category={category}
       last={index === length - 1}
       onClick={canOpenSheet ? handleClick : undefined}
@@ -98,77 +167,19 @@ const ProductElement = ({ product, index, length, onOpen }) => {
         </div>
       )}
 
-      <div
-        style={
-          hasWineBar
-            ? { flex: 1, padding: "0", display: "flex", gap: 12, alignItems: "center" }
-            : { display: "flex", gap: 12, alignItems: "center" }
-        }
-      >
-        {image?.url && !isCave && (
-          <ImageElement
-            image={image.url}
-            width={56}
-            height={56}
-            alt={title}
-            style={{ borderRadius: 8, objectFit: "cover", flexShrink: 0 }}
-          />
-        )}
-        <div style={{ flex: 1, minWidth: 0 }}>
-          {user && user.role === "isAdmin" && (
-            <div data-admin-bar>
-              <AdminButtonBar _id={_id} product={product} />
-            </div>
-          )}
-          <h3 className="title">
-            <span style={{ display: "inline-block" }}>
-              {`${visible ? "" : "CACHÉ : "} ${title}`}
-              {user?.role === "isAdmin" && show && show !== "always" && (() => {
-                const currentSlot = getCurrentTimeSlotFrance();
-                const isActive = show === currentSlot;
-                const label = show === "midi" ? "MIDI" : "SOIR";
-                const color = show === "midi" ? "#4caf50" : "#ff9800";
-                return (
-                  <span
-                    style={{
-                      display: "inline-block",
-                      fontSize: "0.55rem",
-                      fontWeight: "bold",
-                      padding: "2px 6px",
-                      borderRadius: "4px",
-                      marginLeft: "8px",
-                      verticalAlign: "middle",
-                      letterSpacing: "1px",
-                      backgroundColor: isActive ? color : "#888",
-                      color: "white",
-                    }}
-                  >
-                    {isActive ? label : `⏱ ${label}`}
-                  </span>
-                );
-              })()}
-            </span>
-            {category === "evenements" ? (
-              <span className="price">
-                {date ? `Le ${new Date(date).toLocaleDateString()}` : ""}
-                {heure ? ` à ${heure}` : ""}
-              </span>
-            ) : category !== "cave" ||
-              couleur.every((color) => !color.isChecked) ? (
-              <span className="price">{price?.toFixed(2)} €</span>
-            ) : (
-              <WineElement couleur={couleur} wineContent={wineContent} />
-            )}
-          </h3>
-          <p className="description">
-            {description?.length > 0 && (
-              <TranslatorComponent>
-                {description?.replace("\n", " ")}
-              </TranslatorComponent>
-            )}
-          </p>
+      {hasWineBar ? (
+        <div style={{ flex: 1, padding: "0", display: "flex", gap: 12, alignItems: "center" }}>
+          {thumb}
+          <div style={{ flex: 1, minWidth: 0 }}>{textBlock}</div>
         </div>
-      </div>
+      ) : hasThumb ? (
+        <div style={{ display: "flex", gap: 12, alignItems: "center", width: "100%" }}>
+          {thumb}
+          <div style={{ flex: 1, minWidth: 0 }}>{textBlock}</div>
+        </div>
+      ) : (
+        textBlock
+      )}
     </TableauContent>
   );
 };
