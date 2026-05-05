@@ -1,8 +1,9 @@
 export const placeLocation = "20hvin";
+export const CLOUDINARY_CLOUD_NAME = "dugjy765c";
 export const serverURI =
   process.env.NODE_ENV === "production"
-    ? "https://20h20-api.herokuapp.com"
-    : "http://localhost:8080";
+    ? "https://a-20h20-server-v2-6f2c2d3816e2.herokuapp.com"
+    : "http://localhost:4000";
 
 export const colors = {
   main: "#e8e3dc", // texte clair principal

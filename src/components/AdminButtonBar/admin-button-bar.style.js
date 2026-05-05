@@ -15,6 +15,7 @@ export const AdminButtonContainer = styled.div`
 `;
 
 export const AdminButton = styled.button`
+  position: relative;
   border: 1px solid rgba(255,255,255,0.1);
   outline: none;
   border-radius: 8px;
@@ -26,5 +27,9 @@ export const AdminButton = styled.button`
   :active {
     background: ${colors.wine};
     border-color: ${colors.wine};
+  }
+  :disabled {
+    cursor: wait;
+    opacity: 0.7;
   }
 `;
