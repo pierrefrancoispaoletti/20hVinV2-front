@@ -4,7 +4,7 @@ import ImageElement from "../ImageElement/ImageElement";
 
 const ImageUploadField = ({ image, onChange, token }) => {
   const inputRef = useRef(null);
-  const { upload, uploading, error } = useCloudinaryUpload(token);
+  const { upload, uploading, progress, error } = useCloudinaryUpload(token);
 
   const handleFile = async (e) => {
     const file = e.target.files?.[0];
@@ -42,7 +42,30 @@ const ImageUploadField = ({ image, onChange, token }) => {
         onChange={handleFile}
         disabled={uploading}
       />
-      {uploading && <span style={{ marginLeft: 8 }}>Upload en cours…</span>}
+      {uploading && (
+        <div style={{ marginTop: 8 }}>
+          <div
+            style={{
+              height: 6,
+              borderRadius: 3,
+              background: "rgba(255,255,255,0.1)",
+              overflow: "hidden",
+            }}
+          >
+            <div
+              style={{
+                width: `${progress}%`,
+                height: "100%",
+                background: "#f4ba9a",
+                transition: "width 150ms linear",
+              }}
+            />
+          </div>
+          <span style={{ fontSize: "0.85rem", opacity: 0.8 }}>
+            {progress > 0 ? `Upload ${progress}%` : "Compression…"}
+          </span>
+        </div>
+      )}
       {error && (
         <div style={{ color: "#ff6b6b", marginTop: 6, fontSize: "0.85rem" }}>
           {error}
